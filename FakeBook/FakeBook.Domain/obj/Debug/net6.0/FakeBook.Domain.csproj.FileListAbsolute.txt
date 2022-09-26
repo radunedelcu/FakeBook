@@ -10,3 +10,5 @@ C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Domain\obj\Debug\net6
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Domain\obj\Debug\net6.0\refint\FakeBook.Domain.dll
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Domain\obj\Debug\net6.0\FakeBook.Domain.pdb
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Domain\obj\Debug\net6.0\ref\FakeBook.Domain.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Domain\bin\Debug\net6.0\FakeBook.Domain.runtimeconfig.json
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Domain\obj\Debug\net6.0\FakeBook.Domain.genruntimeconfig.cache

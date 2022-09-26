@@ -10,3 +10,10 @@ C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\De
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\refint\FakeBook.Infrastructure.dll
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\FakeBook.Infrastructure.pdb
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\ref\FakeBook.Infrastructure.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\bin\Debug\net6.0\FakeBook.Infrastructure.runtimeconfig.json
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\bin\Debug\net6.0\FakeBook.Application.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\bin\Debug\net6.0\FakeBook.Domain.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\bin\Debug\net6.0\FakeBook.Application.pdb
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\bin\Debug\net6.0\FakeBook.Domain.pdb
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\FakeBook.Infrastructure.csproj.CopyComplete
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\FakeBook.Infrastructure.genruntimeconfig.cache

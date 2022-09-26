@@ -10,3 +10,8 @@ C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\refint\FakeBook.Application.dll
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\FakeBook.Application.pdb
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\ref\FakeBook.Application.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\bin\Debug\net6.0\FakeBook.Application.runtimeconfig.json
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\bin\Debug\net6.0\FakeBook.Domain.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\bin\Debug\net6.0\FakeBook.Domain.pdb
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\FakeBook.Application.csproj.CopyComplete
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\FakeBook.Application.genruntimeconfig.cache
