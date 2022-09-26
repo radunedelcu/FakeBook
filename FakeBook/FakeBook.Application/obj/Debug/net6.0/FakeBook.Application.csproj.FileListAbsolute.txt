@@ -1,0 +1,12 @@
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\bin\Debug\net6.0\FakeBook.Application.deps.json
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\bin\Debug\net6.0\FakeBook.Application.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\bin\Debug\net6.0\FakeBook.Application.pdb
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\FakeBook.Application.csproj.AssemblyReference.cache
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\FakeBook.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\FakeBook.Application.AssemblyInfoInputs.cache
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\FakeBook.Application.AssemblyInfo.cs
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\FakeBook.Application.csproj.CoreCompileInputs.cache
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\FakeBook.Application.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\refint\FakeBook.Application.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\FakeBook.Application.pdb
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Application\obj\Debug\net6.0\ref\FakeBook.Application.dll

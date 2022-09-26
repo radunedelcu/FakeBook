@@ -1,0 +1,12 @@
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\bin\Debug\net6.0\FakeBook.Contracts.deps.json
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\bin\Debug\net6.0\FakeBook.Contracts.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\bin\Debug\net6.0\FakeBook.Contracts.pdb
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\FakeBook.Contracts.csproj.AssemblyReference.cache
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\FakeBook.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\FakeBook.Contracts.AssemblyInfoInputs.cache
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\FakeBook.Contracts.AssemblyInfo.cs
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\FakeBook.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\FakeBook.Contracts.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\refint\FakeBook.Contracts.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\FakeBook.Contracts.pdb
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\ref\FakeBook.Contracts.dll

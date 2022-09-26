@@ -1,0 +1,12 @@
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\bin\Debug\net6.0\FakeBook.Infrastructure.deps.json
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\bin\Debug\net6.0\FakeBook.Infrastructure.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\bin\Debug\net6.0\FakeBook.Infrastructure.pdb
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\FakeBook.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\FakeBook.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\FakeBook.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\FakeBook.Infrastructure.AssemblyInfo.cs
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\FakeBook.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\FakeBook.Infrastructure.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\refint\FakeBook.Infrastructure.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\FakeBook.Infrastructure.pdb
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Infrastructure\obj\Debug\net6.0\ref\FakeBook.Infrastructure.dll

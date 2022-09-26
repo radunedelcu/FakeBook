@@ -1,0 +1,109 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "FakeBook.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "FakeBook.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FakeBook.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FakeBook.Application.dll": {}
+        }
+      },
+      "FakeBook.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/FakeBook.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FakeBook.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FakeBook.Application/1.0.0": {
+      "type": "project",
+      "path": "../FakeBook.Application/FakeBook.Application.csproj",
+      "msbuildProject": "../FakeBook.Application/FakeBook.Application.csproj"
+    },
+    "FakeBook.Domain/1.0.0": {
+      "type": "project",
+      "path": "../FakeBook.Domain/FakeBook.Domain.csproj",
+      "msbuildProject": "../FakeBook.Domain/FakeBook.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "FakeBook.Application >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Roweb\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Infrastructure\\FakeBook.Infrastructure.csproj",
+      "projectName": "FakeBook.Infrastructure",
+      "projectPath": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Infrastructure\\FakeBook.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\Roweb\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Infrastructure\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Roweb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Application\\FakeBook.Application.csproj": {
+              "projectPath": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Application\\FakeBook.Application.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

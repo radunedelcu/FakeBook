@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "UO71UnFmW5XYVvb5VJltBQNdII4NQCNsM/OvyGJ18LY=",
+  "Source": "FakeBook.Api",
+  "BasePath": "_content/FakeBook.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
