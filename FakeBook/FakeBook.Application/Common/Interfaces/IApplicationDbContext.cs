@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 namespace FakeBook.Application.Common.Interfaces {
   public interface IApplicationDbContext {
     DbSet<UserEntity> Users { get; set; }
+    DbSet<RoleEntity> Role { get; set; }
+    DbSet<MessageEntity> Messages { get; set; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken());
   }
 }
