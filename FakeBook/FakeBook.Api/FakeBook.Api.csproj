@@ -28,8 +28,4 @@
     <ProjectReference Include="..\FakeBook.Infrastructure\FakeBook.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

@@ -1,4 +1,10 @@
 using FakeBook.Application.Common.Interfaces;
+using FakeBook.Application.Handlers.Commads;
+using FakeBook.Application.Handlers.Queries.Services;
+using FakeBook.Application.Handlers.Queries;
+using FakeBook.Contracts.Commands;
+using FakeBook.Contracts.Queries.Services;
+using FakeBook.Contracts.Queries;
 using FakeBook.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +20,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
   options.UseSqlServer(connectionString);
 });
+builder.Services.AddScoped<IAuthenticationCommand, AuthenticationCommand>();
+builder.Services.AddScoped<IAuthenticationQuery, AuthenticationQuery>();
+builder.Services.AddScoped<IJwtQueryService, JwtQueryService>();
 
 var app = builder.Build();
 
@@ -25,6 +34,7 @@ if (app.Environment.IsDevelopment()) {
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

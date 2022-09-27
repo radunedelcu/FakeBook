@@ -806,6 +806,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "FakeBook.Contracts": "1.0.0",
           "FakeBook.Domain": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.9",
           "Microsoft.EntityFrameworkCore": "6.0.9",
@@ -817,6 +818,23 @@
         },
         "runtime": {
           "bin/placeholder/FakeBook.Application.dll": {}
+        }
+      },
+      "FakeBook.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "FakeBook.Domain": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.9",
+          "Microsoft.EntityFrameworkCore": "6.0.9",
+          "Microsoft.EntityFrameworkCore.Abstractions": "6.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.9"
+        },
+        "compile": {
+          "bin/placeholder/FakeBook.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FakeBook.Contracts.dll": {}
         }
       },
       "FakeBook.Domain/1.0.0": {
@@ -2087,6 +2105,11 @@
       "type": "project",
       "path": "../FakeBook.Application/FakeBook.Application.csproj",
       "msbuildProject": "../FakeBook.Application/FakeBook.Application.csproj"
+    },
+    "FakeBook.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../FakeBook.Contracts/FakeBook.Contracts.csproj",
+      "msbuildProject": "../FakeBook.Contracts/FakeBook.Contracts.csproj"
     },
     "FakeBook.Domain/1.0.0": {
       "type": "project",

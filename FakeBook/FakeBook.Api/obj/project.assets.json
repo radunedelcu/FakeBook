@@ -893,6 +893,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "FakeBook.Contracts": "1.0.0",
           "FakeBook.Domain": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.9",
           "Microsoft.EntityFrameworkCore": "6.0.9",
@@ -910,6 +911,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "FakeBook.Domain": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.9",
           "Microsoft.EntityFrameworkCore": "6.0.9",
           "Microsoft.EntityFrameworkCore.Abstractions": "6.0.9",

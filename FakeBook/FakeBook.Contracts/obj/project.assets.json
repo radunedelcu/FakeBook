@@ -801,6 +801,22 @@
             "rid": "win"
           }
         }
+      },
+      "FakeBook.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.9",
+          "Microsoft.EntityFrameworkCore": "6.0.9",
+          "Microsoft.EntityFrameworkCore.Abstractions": "6.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.9"
+        },
+        "compile": {
+          "bin/placeholder/FakeBook.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FakeBook.Domain.dll": {}
+        }
       }
     }
   },
@@ -2049,10 +2065,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "FakeBook.Domain/1.0.0": {
+      "type": "project",
+      "path": "../FakeBook.Domain/FakeBook.Domain.csproj",
+      "msbuildProject": "../FakeBook.Domain/FakeBook.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "FakeBook.Domain >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.9",
       "Microsoft.EntityFrameworkCore >= 6.0.9",
       "Microsoft.EntityFrameworkCore.Abstractions >= 6.0.9",
@@ -2087,7 +2109,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Domain\\FakeBook.Domain.csproj": {
+              "projectPath": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Domain\\FakeBook.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

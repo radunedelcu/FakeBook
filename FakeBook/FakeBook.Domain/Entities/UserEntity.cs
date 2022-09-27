@@ -28,9 +28,10 @@ namespace FakeBook.Domain.Entities {
     public byte[] HashPassword {
       get; set;
     }
+    public RoleEntity Role { get; set; }
 
-    [Column("role")]
-    public string Role {
+    [Column("roleId")]
+    public int RoleId {
       get; set;
     }
   }

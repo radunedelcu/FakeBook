@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace FakeBook.Domain.Models.Requests.Commands.Authentication {
   public class RequestRegisterModel {
     public string Name { get; set; }
-    public int Email { get; set; }
-    public int Password { get; set; }
-    public int ConfirmPassword { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public string ConfirmPassword { get; set; }
   }
 }

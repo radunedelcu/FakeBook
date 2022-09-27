@@ -450,6 +450,7 @@
       },
       "FakeBook.Application/1.0.0": {
         "dependencies": {
+          "FakeBook.Contracts": "1.0.0",
           "FakeBook.Domain": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.9",
           "Microsoft.EntityFrameworkCore": "6.0.9",
@@ -458,6 +459,18 @@
         },
         "runtime": {
           "FakeBook.Application.dll": {}
+        }
+      },
+      "FakeBook.Contracts/1.0.0": {
+        "dependencies": {
+          "FakeBook.Domain": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.9",
+          "Microsoft.EntityFrameworkCore": "6.0.9",
+          "Microsoft.EntityFrameworkCore.Abstractions": "6.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.9"
+        },
+        "runtime": {
+          "FakeBook.Contracts.dll": {}
         }
       },
       "FakeBook.Domain/1.0.0": {
@@ -788,6 +801,11 @@
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
     "FakeBook.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FakeBook.Contracts/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

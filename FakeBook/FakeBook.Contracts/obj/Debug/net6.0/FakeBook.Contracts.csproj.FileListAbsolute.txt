@@ -12,3 +12,6 @@ C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\n
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\ref\FakeBook.Contracts.dll
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\bin\Debug\net6.0\FakeBook.Contracts.runtimeconfig.json
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\FakeBook.Contracts.genruntimeconfig.cache
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\bin\Debug\net6.0\FakeBook.Domain.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\bin\Debug\net6.0\FakeBook.Domain.pdb
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Contracts\obj\Debug\net6.0\FakeBook.Contracts.csproj.CopyComplete
