@@ -34,7 +34,5 @@ namespace FakeBook.Domain.Entities {
     public int RoleId {
       get; set;
     }
-
-    public List<FriendEntity> Friends { get; set; }
   }
 }

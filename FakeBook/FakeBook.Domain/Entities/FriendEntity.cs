@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace FakeBook.Domain.Entities {
   public class FriendEntity : TrackableEntity {
-    public int User1Id { get; set; }
-
-    public int User2Id { get; set; }
+    public int? User1Id { get; set; }
+    public int? User2Id { get; set; }
     public bool IsAccepted { get; set; }
-    public UserEntity User { get; set; }
+
+    public UserEntity User1 { get; set; }
+    public UserEntity User2 { get; set; }
   }
 }

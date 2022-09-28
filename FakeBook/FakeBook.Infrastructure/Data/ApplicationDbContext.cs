@@ -19,15 +19,10 @@ namespace FakeBook.Infrastructure.Data {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
-      base.OnModelCreating(modelBuilder);
       foreach (RoleEnum e in Enum.GetValues(typeof(RoleEnum))) {
         modelBuilder.Entity<RoleEntity>().HasData(
             new RoleEntity { Id = (int)e, Name = e.ToString() });
       }
-      modelBuilder.Entity<FriendEntity>()
-          .HasOne(s => s.User)
-          .WithMany(s => s.Friends)
-          .OnDelete(DeleteBehavior.Restrict);
     }
   }
 }

@@ -46,18 +46,17 @@ namespace FakeBook.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_date");
 
-                    b.Property<int>("User1Id")
+                    b.Property<int?>("User1Id")
                         .HasColumnType("int");
 
-                    b.Property<int>("User2Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
+                    b.Property<int?>("User2Id")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("User1Id");
+
+                    b.HasIndex("User2Id");
 
                     b.ToTable("Friends");
                 });
@@ -189,13 +188,17 @@ namespace FakeBook.Infrastructure.Migrations
 
             modelBuilder.Entity("FakeBook.Domain.Entities.FriendEntity", b =>
                 {
-                    b.HasOne("FakeBook.Domain.Entities.UserEntity", "User")
-                        .WithMany("Friends")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                    b.HasOne("FakeBook.Domain.Entities.UserEntity", "User1")
+                        .WithMany()
+                        .HasForeignKey("User1Id");
 
-                    b.Navigation("User");
+                    b.HasOne("FakeBook.Domain.Entities.UserEntity", "User2")
+                        .WithMany()
+                        .HasForeignKey("User2Id");
+
+                    b.Navigation("User1");
+
+                    b.Navigation("User2");
                 });
 
             modelBuilder.Entity("FakeBook.Domain.Entities.MessageEntity", b =>
@@ -218,11 +221,6 @@ namespace FakeBook.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("FakeBook.Domain.Entities.UserEntity", b =>
-                {
-                    b.Navigation("Friends");
                 });
 #pragma warning restore 612, 618
         }
