@@ -1,5 +1,7 @@
 ﻿using FakeBook.Application.Handlers.Commads;
 using FakeBook.Contracts.Commands;
+using FakeBook.Domain.Entities;
+using FakeBook.Domain.Models.Responses.Queries.Friend;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +15,7 @@ namespace FakeBook.Api.Controllers {
 
     public FriendController(IFriendCommand friendCommand) { _friendCommand = friendCommand; }
 
-    [HttpPost()]
+    [HttpPost("AddFriend")]
     [Authorize]
     public async Task<ActionResult> AddFriend(int id) {
       var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
@@ -26,6 +28,50 @@ namespace FakeBook.Api.Controllers {
       await _friendCommand.AddFriend(newData, id);
 
       return NoContent();
+    }
+
+    [HttpPost("AcceptFriendRequest")]
+    [Authorize]
+    public async Task<ActionResult> AcceptFriendRequest(int requesterId) {
+      var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+      if (data == null) {
+        return NotFound();
+      }
+
+      var newData = Convert.ToInt32(data.Value);
+      await _friendCommand.AcceptFriendRequest(newData, requesterId);
+
+      return NoContent();
+    }
+
+    [HttpPost("DeleteFriend")]
+    [Authorize]
+    public async Task<ActionResult> DeleteFriend(int friendId) {
+      var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+      if (data == null) {
+        return NotFound();
+      }
+
+      var newData = Convert.ToInt32(data.Value);
+      await _friendCommand.DeleteFriend(newData, friendId);
+
+      return NoContent();
+    }
+
+    [HttpGet("GetFriends")]
+    [Authorize]
+
+    public async Task<IEnumerable<ResponseFriendModel>> GetFriends() {
+      var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+      if (data == null) {
+        return null;
+      }
+
+      var newData = Convert.ToInt32(data.Value);
+      return await _friendCommand.GetFriends(newData);
     }
   }
 }
