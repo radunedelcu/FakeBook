@@ -45,7 +45,7 @@ namespace FakeBook.Api.Controllers {
       return NoContent();
     }
 
-    [HttpPost("DeleteFriend")]
+    [HttpDelete("DeleteFriend")]
     [Authorize]
     public async Task<ActionResult> DeleteFriend(int friendId) {
       var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);

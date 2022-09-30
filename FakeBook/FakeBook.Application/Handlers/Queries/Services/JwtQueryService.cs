@@ -30,6 +30,8 @@ namespace FakeBook.Application.Handlers.Queries.Services {
         var securityTokenDescriptor = new SecurityTokenDescriptor {
           Subject = new ClaimsIdentity(claims),
           Expires = DateTime.Now.AddDays(1),
+
+
           SigningCredentials = signingCredentials,
         };
 

@@ -15,6 +15,7 @@ namespace FakeBook.Infrastructure.Data {
     public DbSet<RoleEntity> Role { get; set; }
     public DbSet<MessageEntity> Messages { get; set; }
     public DbSet<FriendEntity> Friends { get; set; }
+    public DbSet<ImageEntity> Images { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 

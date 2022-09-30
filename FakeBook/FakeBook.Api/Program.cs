@@ -28,6 +28,8 @@ builder.Services.AddScoped<IAuthenticationCommand, AuthenticationCommand>();
 builder.Services.AddScoped<IAuthenticationQuery, AuthenticationQuery>();
 builder.Services.AddScoped<IJwtQueryService, JwtQueryService>();
 builder.Services.AddScoped<IFriendCommand, FriendCommand>();
+builder.Services.AddScoped<IMessageCommand, MessageCommand>();
+
 builder.Services
     .AddAuthentication(x => {
       x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -53,7 +55,7 @@ if (app.Environment.IsDevelopment()) {
   app.UseSwagger();
   app.UseSwaggerUI();
 }
-app.UseMiddleware<ExceptionMiddleware>();
+// app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

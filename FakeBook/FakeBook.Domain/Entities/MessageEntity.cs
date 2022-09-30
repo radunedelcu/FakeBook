@@ -11,8 +11,9 @@ namespace FakeBook.Domain.Entities {
     [MaxLength(2048)]
     [Column("message")]
     public string Message { get; set; }
+
     [Column("image")]
-    public int ImagePath {
+    public ICollection<ImageEntity> Images {
       get; set;
     }
     public UserEntity User { get; set; }
