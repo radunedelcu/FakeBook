@@ -15,7 +15,7 @@ namespace FakeBook.Api.Controllers {
 
     [HttpPost("UploadMessage")]
     [Authorize]
-    public async Task PostMessage(RequestMessageModel requestMessageModel) {
+    public async Task PostMessage([FromForm] RequestMessageModel requestMessageModel) {
       var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
       if (data == null) {
         return;

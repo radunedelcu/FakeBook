@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FakeBook.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220930070312_DbSetImageTable")]
-    partial class DbSetImageTable
+    [Migration("20221003063043_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,9 +82,8 @@ namespace FakeBook.Infrastructure.Migrations
                     b.Property<int?>("MessageEntityId")
                         .HasColumnType("int");
 
-                    b.Property<string>("MessageId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MessageId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

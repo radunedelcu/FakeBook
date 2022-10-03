@@ -48,10 +48,8 @@ namespace FakeBook.Application.Handlers.Commads {
         throw new Exception($"User {userId} was not found.");
       }
 
-      var newMessage = new MessageEntity() {
-        UserId = userId,
-        Message = message,
-      };
+      var newMessage =
+          new MessageEntity() { UserId = userId, Message = message, CreatedDate = DateTime.Now };
 
       _applicationDbContext.Messages.Add(newMessage);
       if (await _applicationDbContext.SaveChangesAsync() == 0) {
