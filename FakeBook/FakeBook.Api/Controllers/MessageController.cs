@@ -1,5 +1,7 @@
 ﻿using FakeBook.Contracts.Commands;
+using FakeBook.Domain.Entities;
 using FakeBook.Domain.Models.Requests.Commands.Message;
+using FakeBook.Domain.Models.Responses.Queries.Message;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +26,17 @@ namespace FakeBook.Api.Controllers {
 
       var messageId = await _messageCommand.UploadMessage(newData, requestMessageModel.Message);
       await _messageCommand.UploadPhoto(messageId, requestMessageModel.Image);
+    }
+    [HttpGet("GetMessages")]
+    [Authorize]
+    public async Task<IEnumerable<ResponseMessageModel>> GetMessages(int userId) {
+      var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+      if (data == null) {
+        return null;
+      }
+      var newData = Convert.ToInt32(data.Value);
+
+      return await _messageCommand.GetMessages(newData);
     }
   }
 }

@@ -4,6 +4,7 @@ using FakeBook.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FakeBook.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221003070330_AddMessageCollectionToUser")]
+    partial class AddMessageCollectionToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,6 +79,9 @@ namespace FakeBook.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("MessageEntityId")
+                        .HasColumnType("int");
+
                     b.Property<int>("MessageId")
                         .HasColumnType("int");
 
@@ -85,6 +90,8 @@ namespace FakeBook.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MessageEntityId");
 
                     b.ToTable("Images");
                 });
@@ -101,9 +108,6 @@ namespace FakeBook.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_date");
-
-                    b.Property<int?>("ImageId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit")
@@ -124,8 +128,6 @@ namespace FakeBook.Infrastructure.Migrations
                         .HasColumnName("userId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ImageId");
 
                     b.HasIndex("UserId");
 
@@ -230,19 +232,20 @@ namespace FakeBook.Infrastructure.Migrations
                     b.Navigation("User2");
                 });
 
+            modelBuilder.Entity("FakeBook.Domain.Entities.ImageEntity", b =>
+                {
+                    b.HasOne("FakeBook.Domain.Entities.MessageEntity", null)
+                        .WithMany("Images")
+                        .HasForeignKey("MessageEntityId");
+                });
+
             modelBuilder.Entity("FakeBook.Domain.Entities.MessageEntity", b =>
                 {
-                    b.HasOne("FakeBook.Domain.Entities.ImageEntity", "Image")
-                        .WithMany()
-                        .HasForeignKey("ImageId");
-
                     b.HasOne("FakeBook.Domain.Entities.UserEntity", "User")
                         .WithMany("Messages")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Image");
 
                     b.Navigation("User");
                 });
@@ -256,6 +259,11 @@ namespace FakeBook.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("FakeBook.Domain.Entities.MessageEntity", b =>
+                {
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("FakeBook.Domain.Entities.UserEntity", b =>

@@ -13,7 +13,7 @@ namespace FakeBook.Domain.Entities {
     public string Message { get; set; }
 
     [Column("image")]
-    public ICollection<ImageEntity> Images {
+    public ImageEntity? Image {
       get; set;
     }
     public UserEntity User { get; set; }

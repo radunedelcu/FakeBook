@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FakeBook.Domain.Models.Responses.Queries.Message;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace FakeBook.Contracts.Commands {
   public interface IMessageCommand {
     Task<int> UploadMessage(int userId, string message);
     Task UploadPhoto(int messageId, IFormFile file);
+    Task<IEnumerable<ResponseMessageModel>> GetMessages(int userId);
   }
 }

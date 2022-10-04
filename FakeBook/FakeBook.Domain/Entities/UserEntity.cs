@@ -34,5 +34,7 @@ namespace FakeBook.Domain.Entities {
     public int RoleId {
       get; set;
     }
+
+    public ICollection<MessageEntity> Messages { get; set; }
   }
 }

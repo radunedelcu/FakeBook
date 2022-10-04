@@ -1,8 +1,14 @@
 ﻿using FakeBook.Application.Common.Interfaces;
 using FakeBook.Contracts.Commands;
 using FakeBook.Domain.Entities;
+using FakeBook.Domain.Models.Responses.Queries.Friend;
+using FakeBook.Domain.Models.Responses.Queries.Message;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +25,6 @@ namespace FakeBook.Application.Handlers.Commads {
     }
     public async Task UploadPhoto(int messageId, IFormFile file) {
       var image = new ImageEntity();
-      var message = await _applicationDbContext.Users.FindAsync(messageId);
-      if (message == null) {
-        throw new Exception($"User {messageId} was not found.");
-      }
       if (file != null) {
         if (file.Length > 0) {
           var fileName = Path.GetFileName(file.FileName);
@@ -35,6 +37,7 @@ namespace FakeBook.Application.Handlers.Commads {
             file.CopyTo(target);
             image.DataFile = target.ToArray();
           }
+
           _applicationDbContext.Images.Add(image);
           await _applicationDbContext.SaveChangesAsync();
         }
@@ -48,8 +51,11 @@ namespace FakeBook.Application.Handlers.Commads {
         throw new Exception($"User {userId} was not found.");
       }
 
-      var newMessage =
-          new MessageEntity() { UserId = userId, Message = message, CreatedDate = DateTime.Now };
+      var newMessage = new MessageEntity() {
+        UserId = userId,
+        Message = message,
+        CreatedDate = DateTime.Now,
+      };
 
       _applicationDbContext.Messages.Add(newMessage);
       if (await _applicationDbContext.SaveChangesAsync() == 0) {
@@ -57,6 +63,17 @@ namespace FakeBook.Application.Handlers.Commads {
       }
 
       return newMessage.Id;
+    }
+
+    public async Task<IEnumerable<ResponseMessageModel>> GetMessages(int userId) {
+      var user = await _applicationDbContext.Users.FindAsync(userId);
+
+      return await _applicationDbContext.Messages.Where(f => f.UserId == userId)
+          .Join(_applicationDbContext.Images, m => m.Id, i => i.MessageId,
+                (m, i) =>
+                    new ResponseMessageModel() { Message = m.Message, CreatedDate = m.CreatedDate,
+                                                 Image = i.DataFile, FileType = i.FileType })
+          .ToListAsync();
     }
   }
 }
