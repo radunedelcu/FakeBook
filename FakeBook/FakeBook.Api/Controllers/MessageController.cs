@@ -24,8 +24,8 @@ namespace FakeBook.Api.Controllers {
       }
       var newData = Convert.ToInt32(data.Value);
 
-      var messageId = await _messageCommand.UploadMessage(newData, requestMessageModel.Message);
-      await _messageCommand.UploadPhoto(messageId, requestMessageModel.Image);
+      var messageId = await _messageCommand.UploadMessage(newData, requestMessageModel.Message,
+                                                          requestMessageModel.Image);
     }
     [HttpGet("GetMessages")]
     [Authorize]

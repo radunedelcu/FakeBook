@@ -28,4 +28,8 @@
     <ProjectReference Include="..\FakeBook.Infrastructure\FakeBook.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Images\" />
+  </ItemGroup>
+
 </Project>

@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace FakeBook.Domain.Models.Responses.Queries.Message {
   public class ResponseMessageModel {
     public string Message { get; set; }
-    public string FileType { get; set; }
-    public byte[] Image { get; set; }
+    public string? ImagePath { get; set; }
     public DateTime CreatedDate { get; set; }
   }
 }

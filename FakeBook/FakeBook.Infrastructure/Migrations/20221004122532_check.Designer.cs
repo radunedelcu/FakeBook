@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FakeBook.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221003070330_AddMessageCollectionToUser")]
-    partial class AddMessageCollectionToUser
+    [Migration("20221004122532_check")]
+    partial class check
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,39 +63,6 @@ namespace FakeBook.Infrastructure.Migrations
                     b.ToTable("Friends");
                 });
 
-            modelBuilder.Entity("FakeBook.Domain.Entities.ImageEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<byte[]>("DataFile")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("FileType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("MessageEntityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MessageId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MessageEntityId");
-
-                    b.ToTable("Images");
-                });
-
             modelBuilder.Entity("FakeBook.Domain.Entities.MessageEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -108,6 +75,10 @@ namespace FakeBook.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_date");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("imagePath");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit")
@@ -232,13 +203,6 @@ namespace FakeBook.Infrastructure.Migrations
                     b.Navigation("User2");
                 });
 
-            modelBuilder.Entity("FakeBook.Domain.Entities.ImageEntity", b =>
-                {
-                    b.HasOne("FakeBook.Domain.Entities.MessageEntity", null)
-                        .WithMany("Images")
-                        .HasForeignKey("MessageEntityId");
-                });
-
             modelBuilder.Entity("FakeBook.Domain.Entities.MessageEntity", b =>
                 {
                     b.HasOne("FakeBook.Domain.Entities.UserEntity", "User")
@@ -259,11 +223,6 @@ namespace FakeBook.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("FakeBook.Domain.Entities.MessageEntity", b =>
-                {
-                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("FakeBook.Domain.Entities.UserEntity", b =>

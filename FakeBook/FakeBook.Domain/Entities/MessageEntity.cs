@@ -12,8 +12,8 @@ namespace FakeBook.Domain.Entities {
     [Column("message")]
     public string Message { get; set; }
 
-    [Column("image")]
-    public ImageEntity? Image {
+    [Column("imagePath")]
+    public string? ImagePath {
       get; set;
     }
     public UserEntity User { get; set; }

@@ -4,7 +4,7 @@
 
 namespace FakeBook.Infrastructure.Migrations
 {
-    public partial class AddMessageCollectionToUser : Migration
+    public partial class check : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
