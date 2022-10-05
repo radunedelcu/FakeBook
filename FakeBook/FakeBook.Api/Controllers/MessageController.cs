@@ -4,7 +4,9 @@ using FakeBook.Domain.Entities;
 using FakeBook.Domain.Models.Requests.Commands.Message;
 using FakeBook.Domain.Models.Responses.Queries.Message;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -32,12 +34,40 @@ namespace FakeBook.Api.Controllers {
       var messageId = await _messageCommand.UploadMessage(newData, requestMessageModel.Message,
                                                           requestMessageModel.Image);
     }
+    [HttpPatch("EditMessage")]
+    public async Task<ActionResult> EditMessage(
+        int messageId,
+        JsonPatchDocument<RequestMessageUpdateModel> patch) {
+      var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+      if (data == null) {
+        return NotFound();
+      }
+      var newData = Convert.ToInt32(data.Value);
+
+      var messageEntity = await _messageCommand.GetMessageForUser(newData);
+      if (messageEntity == null) {
+        return NotFound();
+      }
+
+      var message = new RequestMessageUpdateModel();
+      message.Message = messageEntity.Message;
+      if (messageEntity.ImagePath != null) {
+        message.ImagePath = messageEntity.ImagePath;
+      }
+
+      patch.ApplyTo(message);
+      messageEntity.Message = message.Message;
+      messageEntity.ImagePath = message.ImagePath;
+      await _messageCommand.SaveChangesAsync();
+      return NoContent();
+    }
+
     [HttpGet("GetMessages")]
     [Authorize]
     public async Task<IEnumerable<ResponseMessageModel>> GetMessages() {
       var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
       if (data == null) {
-        return null;
+        return new List<ResponseMessageModel>();
       }
       var newData = Convert.ToInt32(data.Value);
 
@@ -48,7 +78,7 @@ namespace FakeBook.Api.Controllers {
     public async Task<IEnumerable<ResponseMessageModel>> GetFriendMessages() {
       var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
       if (data == null) {
-        return null;
+        return new List<ResponseMessageModel>();
       }
       var newData = Convert.ToInt32(data.Value);
 

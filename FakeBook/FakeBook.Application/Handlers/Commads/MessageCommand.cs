@@ -65,5 +65,13 @@ namespace FakeBook.Application.Handlers.Commads {
           .OrderBy(f => f.CreatedDate)
           .ToListAsync();
     }
+
+    public async Task<MessageEntity> GetMessageForUser(int userId) {
+      return await _applicationDbContext.Messages.Where(m => m.UserId == userId)
+          .FirstOrDefaultAsync();
+    }
+    public async Task<bool> SaveChangesAsync() {
+      return (await _applicationDbContext.SaveChangesAsync() == 0);
+    }
   }
 }
