@@ -83,9 +83,9 @@ namespace FakeBook.Application.Handlers.Commads {
 
     public async Task<IEnumerable<ResponseFriendModel>> GetFriends(int id) {
       return await _applicationDbContext.Friends.Where(f => f.User1Id == id || f.User2Id == id)
-          .Select(f => new ResponseFriendModel() {
-            Id = f.Id, Name = f.User1Id == id ? f.User2.Name : f.User1.Name
-          })
+          .Select(f => new ResponseFriendModel() { Id = f.User1Id == id ? f.User2.Id : f.User1.Id,
+                                                   Name = f.User1Id == id ? f.User2.Name
+                                                                          : f.User1.Name })
           .OrderBy(f => f.Name)
           .ToListAsync();
     }

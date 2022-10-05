@@ -1,4 +1,5 @@
-﻿using FakeBook.Contracts.Commands;
+﻿using FakeBook.Application.Handlers.Commads;
+using FakeBook.Contracts.Commands;
 using FakeBook.Domain.Entities;
 using FakeBook.Domain.Models.Requests.Commands.Message;
 using FakeBook.Domain.Models.Responses.Queries.Message;
@@ -12,8 +13,12 @@ namespace FakeBook.Api.Controllers {
   [ApiController]
   public class MessageController : ControllerBase {
     private readonly IMessageCommand _messageCommand;
+    private readonly IFriendCommand _friendCommand;
 
-    public MessageController(IMessageCommand messageCommand) { _messageCommand = messageCommand; }
+    public MessageController(IMessageCommand messageCommand, IFriendCommand friendCommand) {
+      _messageCommand = messageCommand;
+      _friendCommand = friendCommand;
+    }
 
     [HttpPost("UploadMessage")]
     [Authorize]
@@ -29,7 +34,7 @@ namespace FakeBook.Api.Controllers {
     }
     [HttpGet("GetMessages")]
     [Authorize]
-    public async Task<IEnumerable<ResponseMessageModel>> GetMessages(int userId) {
+    public async Task<IEnumerable<ResponseMessageModel>> GetMessages() {
       var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
       if (data == null) {
         return null;
@@ -37,6 +42,23 @@ namespace FakeBook.Api.Controllers {
       var newData = Convert.ToInt32(data.Value);
 
       return await _messageCommand.GetMessages(newData);
+    }
+
+    [HttpGet("GetFriendMessages")]
+    public async Task<IEnumerable<ResponseMessageModel>> GetFriendMessages() {
+      var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+      if (data == null) {
+        return null;
+      }
+      var newData = Convert.ToInt32(data.Value);
+
+      var messageList = (List<ResponseMessageModel>)await _messageCommand.GetMessages(newData);
+      var friendList = await _friendCommand.GetFriends(newData);
+
+      foreach (var friend in friendList) {
+        messageList.AddRange(await _messageCommand.GetMessages(friend.Id));
+      }
+      return messageList.OrderByDescending(f => f.CreatedDate);
     }
   }
 }

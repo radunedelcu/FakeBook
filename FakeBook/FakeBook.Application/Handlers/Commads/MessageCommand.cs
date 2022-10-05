@@ -59,11 +59,9 @@ namespace FakeBook.Application.Handlers.Commads {
     public async Task<IEnumerable<ResponseMessageModel>> GetMessages(int userId) {
       var user = await _applicationDbContext.Users.FindAsync(userId);
 
-      return await _applicationDbContext.Messages
-          .Where(f => f.UserId == userId)
-
+      return await _applicationDbContext.Messages.Where(f => f.UserId == userId)
           .Select(f => new ResponseMessageModel() { Message = f.Message, CreatedDate = DateTime.Now,
-                                                    ImagePath = f.ImagePath })
+                                                    ImagePath = f.ImagePath, Name = f.User.Name })
           .OrderBy(f => f.CreatedDate)
           .ToListAsync();
     }
