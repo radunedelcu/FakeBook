@@ -37,6 +37,7 @@ namespace FakeBook.Api.Controllers {
     [HttpPatch("EditMessage")]
     public async Task<ActionResult> EditMessage(
         int messageId,
+        IFormFile? image,
         JsonPatchDocument<RequestMessageUpdateModel> patch) {
       var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
       if (data == null) {
@@ -44,21 +45,7 @@ namespace FakeBook.Api.Controllers {
       }
       var newData = Convert.ToInt32(data.Value);
 
-      var messageEntity = await _messageCommand.GetMessageForUser(newData);
-      if (messageEntity == null) {
-        return NotFound();
-      }
-
-      var message = new RequestMessageUpdateModel();
-      message.Message = messageEntity.Message;
-      if (messageEntity.ImagePath != null) {
-        message.ImagePath = messageEntity.ImagePath;
-      }
-
-      patch.ApplyTo(message);
-      messageEntity.Message = message.Message;
-      messageEntity.ImagePath = message.ImagePath;
-      await _messageCommand.SaveChangesAsync();
+      await _messageCommand.EditMessage(newData, messageId, patch, image);
       return NoContent();
     }
 
