@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http.Headers;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,13 +33,7 @@ namespace FakeBook.Application.Handlers.Commads {
       _applicationDbContext = applicationDbContext;
       _webHostEnvironment = webHostEnvironment;
     }
-
-    public async Task<int> UploadMessage(int userId, string message, IFormFile file) {
-      var user = await _applicationDbContext.Users.FindAsync(userId);
-
-      if (user == null) {
-        throw new Exception($"User {userId} was not found.");
-      }
+    public string UploadImage(IFormFile file) {
       var fileName = Convert.ToBase64String(Guid.NewGuid().ToByteArray())
                          .Substring(0, 6)
                          .Replace("\\", "_")
@@ -51,6 +47,16 @@ namespace FakeBook.Application.Handlers.Commads {
           file.CopyTo(stream);
         }
       }
+      return filePath;
+    }
+    public async Task<int> UploadMessage(int userId, string message, IFormFile file) {
+      var user = await _applicationDbContext.Users.FindAsync(userId);
+
+      if (user == null) {
+        throw new Exception($"User {userId} was not found.");
+      }
+
+      var filePath = UploadImage(file);
       var newMessage =
           new MessageEntity() { UserId = userId, Message = message, CreatedDate = DateTime.Now,
                                 ImagePath = file == null ? "" : filePath };
@@ -73,45 +79,34 @@ namespace FakeBook.Application.Handlers.Commads {
           .ToListAsync();
     }
 
-    public async Task<MessageEntity?> GetMessageForUser(int userId) {
-      return await _applicationDbContext.Messages.Where(m => m.UserId == userId)
+    public async Task<MessageEntity?> GetMessage(int messageId, int userId) {
+      return await _applicationDbContext.Messages
+          .Where(m => m.Id == messageId && m.UserId == userId)
           .FirstOrDefaultAsync();
     }
 
-    public async Task EditMessage(int userId,
-                                  int messageId,
-                                  JsonPatchDocument<RequestMessageUpdateModel> patch,
-                                  IFormFile? file) {
-      var messageEntity = await GetMessageForUser(userId);
+    public async Task<bool> EditMessage(int userId,
+                                        int messageId,
+                                        string message,
+                                        IFormFile image) {
+      var messageEntity = await GetMessage(messageId, userId);
       if (messageEntity == null) {
         throw new Exception("The message was not found.");
       }
-
-      var message = new RequestMessageUpdateModel();
-      message.Message = messageEntity.Message;
-      if (messageEntity.ImagePath == null) {
-        var fileName = Convert.ToBase64String(Guid.NewGuid().ToByteArray())
-                           .Substring(0, 6)
-                           .Replace("\\", "_")
-                           .Replace("+", "-");
-        string filePath = String.Empty;
-        if (file != null) {
-          string directoryPath =
-              Path.Combine(_webHostEnvironment.ContentRootPath, "Resources/Images");
-          filePath = Path.Combine(directoryPath, fileName);
-          using (var stream = new FileStream(filePath, FileMode.Create)) {
-            file.CopyTo(stream);
-          }
-          message.ImagePath = file == null ? "" : filePath;
-        } else {
-          message.ImagePath = messageEntity.ImagePath;
-        }
-
-        patch.ApplyTo(message);
-        messageEntity.Message = message.Message;
-        messageEntity.ImagePath = message.ImagePath;
-        await _applicationDbContext.SaveChangesAsync();
+      // string filePath = string.Empty;
+      if (image != null) {
+        var filePath = UploadImage(image);
+        messageEntity.ImagePath = filePath;
+        _applicationDbContext.Messages.Update(messageEntity);
       }
+      if (message != null) {
+        messageEntity.Message = message;
+      }
+
+      // message.Message = messageEntity.Message;
+      // message.ImagePath = messageEntity.ImagePath;
+
+      return await _applicationDbContext.SaveChangesAsync() > 0;
     }
   }
 }

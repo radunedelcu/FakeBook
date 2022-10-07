@@ -20,13 +20,14 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Profile
             </a>
-            <ul class="dropdown-menu" style="">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Login</a></li>
+              <li><a class="dropdown-item" href="/register">Register</a></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
             </ul>
           </li>
         </ul>
@@ -62,5 +63,11 @@ nav a.router-link-exact-active {
 
 .d-flex {
   margin: auto;
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: 115% !important;
+  right: -12px !important;
+  margin-top: var(--bs-dropdown-spacer);
 }
 </style>

@@ -34,18 +34,16 @@ namespace FakeBook.Api.Controllers {
       var messageId = await _messageCommand.UploadMessage(newData, requestMessageModel.Message,
                                                           requestMessageModel.Image);
     }
-    [HttpPatch("EditMessage")]
-    public async Task<ActionResult> EditMessage(
-        int messageId,
-        IFormFile? image,
-        JsonPatchDocument<RequestMessageUpdateModel> patch) {
+    [HttpPost("EditMessage")]
+    [Authorize]
+    public async Task<IActionResult> EditMessage([FromForm] RequestMessageUpdateModel newPost) {
       var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
       if (data == null) {
         return NotFound();
       }
       var newData = Convert.ToInt32(data.Value);
 
-      await _messageCommand.EditMessage(newData, messageId, patch, image);
+      await _messageCommand.EditMessage(newData, newPost.MessageId, newPost.Message, newPost.Image);
       return NoContent();
     }
 

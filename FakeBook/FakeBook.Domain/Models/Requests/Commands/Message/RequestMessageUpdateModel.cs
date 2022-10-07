@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace FakeBook.Domain.Models.Requests.Commands.Message {
   public class RequestMessageUpdateModel {
-    [Required(ErrorMessage = "Please type a message.")]
-    [MaxLength(2048)]
-    public string Message { get; set; }
-    public string ImagePath { get; set; }
+    public int MessageId { get; set; }
+    public string? Message { get; set; }
+    public IFormFile? Image { get; set; }
   }
 }
