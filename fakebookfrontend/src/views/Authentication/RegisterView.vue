@@ -1,79 +1,136 @@
 <template>
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-              <form>
 
-                <div class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example1cg">Your Name</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example3cg">Your Email</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cg">Password</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
-                </div>
-
-                <div class="form-check d-flex justify-content-center mb-5">
-                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                  <label class="form-check-label" for="form2Example3g">
-                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                  </label>
-                </div>
-
-                <div class="d-flex justify-content-center">
-                  <button type="button"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
-                </div>
-
-                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
-                    class="fw-bold text-body"><u>Login here</u></a></p>
-
-              </form>
-
-            </div>
-          </div>
-        </div>
+  <div class="auth">
+    <form @submit.prevent="handleSubmit" class="box">
+      <h1>Register</h1>
+      <input type="text" name="" v-model="name" placeholder="Username">
+      <input type="text" name="" v-model="email" placeholder="Email">
+      <input type="password" v-model="password" name="" placeholder="Password">
+      <input type="password" v-model="confirmPassword" name="" placeholder="Confirm Password">
+      <input type="submit" name="" value="Register" href="/">
+      <div>
       </div>
-    </div>
+    </form>
   </div>
-    <router-view></router-view>
+  <router-view></router-view>
 </template>
+
+<script>
+  import axios from 'axios'
+export default {
+  name: 'RegisterView',
+  data() {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    }
+  },
+
+  methods: {
+    handleSubmit() {
+      const data = {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+        confirmPassword: this.confirmPassword
+      };
+      
+      axios.post('https://localhost:7026/api/Authentication/register', data)
+      .then(res => {
+        console.log(res)
+      }).catch(
+        err => {
+          console.log(err)
+        }
+      )
+
+      this.$router.push('/login');
+    }
+  }
+}
+</script>
+
 <style>
-  .gradient-custom-3 {
-    /* fallback for old browsers */
-    background: #84fab0;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
-    
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
-    }
-    .gradient-custom-4 {
-    /* fallback for old browsers */
-    background: #84fab0;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
-    
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
-    }
-    
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: linear-gradient(to right, #1565c0, #acc5e6)
+}
+
+.card {
+  margin-bottom: 20px;
+  border: none;
+}
+
+.box {
+  width: 500px;
+  padding: 40px;
+  position: relative;
+  background: white;
+  text-align: center;
+  transition: 0.25s;
+
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 10px 10px;
+  width: 250px;
+  outline: none;
+  color: black;
+  border-radius: 24px;
+  transition: 0.25s
+}
+
+.box h1 {
+  color: black;
+  text-transform: uppercase;
+  font-weight: 500
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+  width: 300px;
+  border-color: #2ecc71
+}
+
+.box input[type="submit"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  outline: none;
+  color: black;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer
+}
+
+.box input[type="submit"]:hover {
+  background: #2ecc71
+}
+
+.auth {
+  margin: auto;
+  width: 500px;
+  margin-top: 100px;
+  padding: 10px;
+}
+
+.forgot {
+  text-decoration: underline
+}
 </style>

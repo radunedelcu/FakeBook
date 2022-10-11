@@ -22,7 +22,7 @@ namespace FakeBook.Api.Controllers {
     public async Task<IActionResult> Register(
         [FromBody] RequestRegisterModel requestRegisterModel) {
       var result = await _authenticationCommand.Register(requestRegisterModel);
-      if (string.IsNullOrEmpty(result)) {
+      if (result == null) {
         return BadRequest();
       }
 

@@ -15,5 +15,6 @@ namespace FakeBook.Contracts.Commands {
     Task<IEnumerable<ResponseMessageModel>> GetMessages(int userId);
     Task<MessageEntity?> GetMessage(int messageId, int userId);
     Task<bool> EditMessage(int userId, int messageId, string message, IFormFile image);
+    Task<bool> DeleteMessage(int messageId, int userId);
   }
 }

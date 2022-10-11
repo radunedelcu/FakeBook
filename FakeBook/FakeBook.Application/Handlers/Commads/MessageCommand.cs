@@ -108,5 +108,15 @@ namespace FakeBook.Application.Handlers.Commads {
 
       return await _applicationDbContext.SaveChangesAsync() > 0;
     }
+
+    public async Task<bool> DeleteMessage(int messageId, int userId) {
+      var message = await GetMessage(messageId, userId);
+      if (message == null) {
+        return false;
+      }
+
+      _applicationDbContext.Messages.Remove(message);
+      return await _applicationDbContext.SaveChangesAsync() > 0;
+    }
   }
 }

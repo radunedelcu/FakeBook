@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand text-white" href="#">fakebook</a>
+      <a class="navbar-brand text-white" href="/">fakebook</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,16 +12,13 @@
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex" style="margin-right: 0px !important;">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 100px">
               Profile
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Login</a></li>
+              <li><a class="dropdown-item" href="/login">Login</a></li>
               <li><a class="dropdown-item" href="/register">Register</a></li>
               <li><a class="dropdown-item" href="#">Logout</a></li>
               <li>

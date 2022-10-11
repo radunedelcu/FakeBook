@@ -5,6 +5,7 @@ using FakeBook.Contracts.Queries.Services;
 using FakeBook.Domain.Entities;
 using FakeBook.Domain.Enums;
 using FakeBook.Domain.Models.Requests.Commands.Authentication;
+using FakeBook.Domain.Models.Responses.Commands.Authentication;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -23,14 +24,14 @@ namespace FakeBook.Application.Handlers.Commads {
       _jwtQueryService = jwtQueryService;
     }
 
-    public async Task<string> Register(RequestRegisterModel requestRegisterModel) {
+    public async Task<ResponseRegisterModel?> Register(RequestRegisterModel requestRegisterModel) {
       try {
         var accountAlreadyExists = await _applicationDbContext.Users.AsNoTracking().AnyAsync(
             entity => entity.Name == requestRegisterModel.Name.Trim().ToLower() ||
                       entity.Email == requestRegisterModel.Email.Trim().ToLower());
 
         if (accountAlreadyExists == true) {
-          return "Username or email already exists!";
+          throw new Exception("Username or email already exists!");
         }
 
         ComputeHashPassword(requestRegisterModel.Password, out byte[] keyPassword,
@@ -45,10 +46,10 @@ namespace FakeBook.Application.Handlers.Commads {
 
         _applicationDbContext.Users.Add(accountEntity);
         var isSavedSuccessfully = await _applicationDbContext.SaveChangesAsync() > 0;
-
-        return isSavedSuccessfully
-                   ? _jwtQueryService.GetJwtToken(accountEntity.Email, accountEntity.Id)
-                   : string.Empty;
+        ResponseRegisterModel token =
+            new ResponseRegisterModel { Token = _jwtQueryService.GetJwtToken(accountEntity.Email,
+                                                                             accountEntity.Id) };
+        return isSavedSuccessfully ? token : null;
       } catch (Exception) {
         throw;
       }

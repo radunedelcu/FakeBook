@@ -75,5 +75,19 @@ namespace FakeBook.Api.Controllers {
       }
       return messageList.OrderByDescending(f => f.CreatedDate);
     }
+
+    [HttpDelete("DeleteMessage")]
+    [Authorize]
+    public async Task<IActionResult> DeleteMessage(int messageId) {
+      var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+      if (data == null) {
+        return NotFound();
+      }
+      var newData = Convert.ToInt32(data.Value);
+      if (await _messageCommand.DeleteMessage(messageId, newData) == true) {
+        return Ok();
+      } else
+        return Problem();
+    }
   }
 }
