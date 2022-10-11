@@ -2,44 +2,109 @@
 
 
     <div class="auth">
-      <form @submit.prevent="handleSubmit" class="box">
+      <!-- <Form @submit.prevent="handleLogin" class="box">
         <h1>Login</h1>
         <p class="text-muted"> Please enter your login and password!</p>
-        <input type="text" v-model="email" name="" placeholder="Username">
-        <input type="password" v-model="password" name="" placeholder="Password">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <Field name="username" type="text" class="form-control" />
+          <ErrorMessage name="username" class="error-feedback" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <Field name="password" type="password" class="form-control" />
+          <ErrorMessage name="password" class="error-feedback" />
+        </div>
    
         <input type="submit" name="" value="Login" href="#">
         <div>
         </div>
-      </form>
+      </Form> -->
+      <Form class="box" @submit="handleLogin" :validation-schema="schema">
+        <h1>Login</h1>
+        <div class="form-group">
+          <Field name="email" placeholder="Email" type="text" class="form-control" />
+          <ErrorMessage name="username" class="error-feedback" />
+        </div>
+        <div class="form-group">
+          <Field name="password" placeholder="Password" type="password" class="form-control"/>
+          <ErrorMessage name="password" class="error-feedback" />
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" :disabled="loading">
+            <span
+              v-show="loading"
+              class="spinner-border spinner-border-sm"
+            ></span>
+            <span>Login</span>
+          </button>
+        </div>
+
+        <div class="form-group">
+          <div v-if="message" class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>
+        </div>
+      </Form>
     </div>
     <router-view></router-view>
   </template>
 
 <script>
-import axios from 'axios'
+import { Form, Field, ErrorMessage } from "vee-validate";
+import * as yup from "yup";
+
 export default {
-  name: 'LoginView',
+  name: "LoginView",
+  components: {
+    Form,
+    Field,
+    ErrorMessage,
+  },
   data() {
+    const schema = yup.object().shape({
+      email: yup.string().required("Email is required!"),
+      password: yup.string().required("Password is required!"),
+    });
+
     return {
-      email: '',
-      password: ''
+      loading: false,
+      message: "",
+      schema,
+    };
+  },
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    },
+  },
+  created() {
+    if (this.loggedIn) {
+      this.$router.push("/");
     }
   },
+  methods: {
+    handleLogin(user) {
+      this.loading = true;
 
-  methods:{
-     handleSubmit() {
-      console.log("intra")
-      const response = axios.post('https://localhost:7026/api/Authentication/login', {
-        email: this.email,
-        password: this.password
-      });
-
-      localStorage.SetItem('token', response.data.token)
-    }
-    
-  }
-}
+      this.$store.dispatch("auth/login", user).then(
+        () => {
+          this.$router.push("/");
+        },
+        (error) => {
+          this.loading = false;
+          this.message =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+        }
+      );
+    },
+  },
+};
 </script>
 
   <style>
@@ -47,7 +112,7 @@ export default {
       margin: 0;
       padding: 0;
       font-family: sans-serif;
-      background: linear-gradient(to right, #1565c0, #acc5e6)
+      background-color: #f0f2f5 !important
     }
     
     .card {
@@ -56,6 +121,7 @@ export default {
     }
     
     .box {
+      box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);;
       width: 500px;
       padding: 40px;
       position: relative;
@@ -111,7 +177,7 @@ export default {
     .box input[type="submit"]:hover {
       background: #2ecc71
     }
-    
+
     .auth {
       margin: auto;
       width: 500px;
@@ -122,4 +188,10 @@ export default {
     .forgot {
       text-decoration: underline
     }
+
+    .error-feedback {
+       color: red;
+    }
+
+    
     </style>
