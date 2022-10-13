@@ -30,9 +30,9 @@ namespace FakeBook.Application.Handlers.Queries {
         if (accountEntity != null &&
             IsPasswordCorrect(requestLoginModel.Password, accountEntity.KeyPassword,
                               accountEntity.HashPassword)) {
-          return new ResponseLoginModel() {
-            Token = _jwtQueryService.GetJwtToken(accountEntity.Email, accountEntity.Id),
-          };
+          return new ResponseLoginModel() { Token = _jwtQueryService.GetJwtToken(
+                                                accountEntity.Email, accountEntity.Id),
+                                            Name = accountEntity.Name };
         }
 
         return null;

@@ -24,7 +24,9 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li v-if="this.$store.state.auth.status.loggedIn">
+                <a class="dropdown-item" href="#">Hi </a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -34,6 +36,8 @@
   </nav>
   <router-view></router-view>
 </template>
+
+
 
 <style>
 #app {
