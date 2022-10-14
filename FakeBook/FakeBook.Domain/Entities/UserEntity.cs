@@ -6,9 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FakeBook.Domain.Entities {
-  [Table("users")]
-  public class UserEntity : TrackableEntity {
+namespace FakeBook.Domain.Entities
+{
+[Table("users")]
+public class UserEntity : TrackableEntity
+{
     [MaxLength(64)]
     [Column("name")]
     public string Name { get; set; }
@@ -16,25 +18,39 @@ namespace FakeBook.Domain.Entities {
     [MaxLength(128)]
     [Column("username")]
     public string Email {
-      get; set;
+        get; set;
     }
 
     [Column("key_password")]
     public byte[] KeyPassword {
-      get; set;
+        get; set;
     }
 
     [Column("hash_password")]
     public byte[] HashPassword {
-      get; set;
+        get; set;
     }
     public RoleEntity Role { get; set; }
 
     [Column("roleId")]
     public int RoleId {
-      get; set;
+        get; set;
     }
 
+    [Column("profilePicturePath")]
+    public string? ProfilePicture {
+        get; set;
+    }
+
+    [Column("coverImagePath")]
+    public string? CoverImage {
+        get; set;
+    }
+
+    [Column("Quote")]
+    public string? Quote {
+        get; set;
+    }
     public ICollection<MessageEntity> Messages { get; set; }
-  }
+}
 }

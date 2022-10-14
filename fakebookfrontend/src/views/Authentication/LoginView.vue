@@ -39,7 +39,11 @@
             ></span>
             <span>Login</span>
           </button>
+          <br/>
+          <br/>
+          <a href="/register">Don't have an account? Register here</a>
         </div>
+
 
         <div class="form-group">
           <div v-if="message" class="alert alert-danger" role="alert">
@@ -81,7 +85,7 @@ export default {
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/");
+      this.$router.push("/home");
     }
   },
   methods: {
@@ -90,7 +94,7 @@ export default {
 
       this.$store.dispatch("auth/login", user).then(
         () => {
-          this.$router.push("/");
+          this.$router.push("/home");
         },
         (error) => {
           this.loading = false;

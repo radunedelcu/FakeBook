@@ -3,6 +3,13 @@ import axios from "axios"
 const API_URL = 'https://localhost:7026/api/Authentication/';
 
 class AuthService {
+
+   getAuth(){
+     return  axios
+      .get(API_URL + 'auth')
+      .then(response => response.data);
+   }
+
   login(user) {
     return axios
     .post(API_URL + 'login', {
@@ -19,9 +26,10 @@ class AuthService {
       });
   } 
 
-  // logout() {
-  //   localStorage.removeItem(user);
-  // }
+  logout() {
+    localStorage.removeItem('userToken')
+    localStorage.removeItem('userName')
+  }
 
   register(user) {
     return axios.post(API_URL + 'register', {

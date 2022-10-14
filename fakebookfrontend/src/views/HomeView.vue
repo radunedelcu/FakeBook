@@ -7,9 +7,7 @@
 <script>
 export default {
   name: 'HomeView',
-  async created() {
-  
-  }
+ 
 }
 </script>
 

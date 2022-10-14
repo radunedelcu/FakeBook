@@ -141,6 +141,10 @@ namespace FakeBook.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("CoverImage")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("coverImagePath");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("created_date");
@@ -170,6 +174,15 @@ namespace FakeBook.Infrastructure.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)")
                         .HasColumnName("name");
+
+                    b.Property<string>("ProfilePicture")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("profilePicturePath");
+
+                    b.Property<string>("Quote")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Quote");
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int")

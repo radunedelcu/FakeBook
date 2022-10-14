@@ -43,6 +43,9 @@
             Register
           </button>
         </div>
+        <br/>
+        <br/>
+        <a href="/login">Already have an account? Login</a>
       </div>
     </Form>
 

@@ -1,7 +1,7 @@
 import AuthService from '../services/AuthenticationService';
 
 const user = JSON.parse(localStorage.getItem('user'));
-const userName = JSON.parse(localStorage.getItem('userName'))
+// const userName = JSON.parse(localStorage.getItem('userName'))
 const initialState = user
   ? { status: { loggedIn: true }, user }
   : { status: { loggedIn: false }, user: null };
@@ -43,7 +43,6 @@ export const auth = {
     loginSuccess(state, user) {
       state.status.loggedIn = true;
       state.user = user;
-      user.userName = userName;
     },
     loginFailure(state) {
       state.status.loggedIn = false;
@@ -58,6 +57,6 @@ export const auth = {
     },
     registerFailure(state) {
       state.status.loggedIn = false;
-    }
+    },
   }
 };

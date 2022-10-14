@@ -33,6 +33,8 @@
 
   <ItemGroup>
     <Folder Include="Resources\Images\" />
+    <Folder Include="Resources\CoverImages\" />
+    <Folder Include="Resources\ProfilePictures\" />
   </ItemGroup>
 
 </Project>
