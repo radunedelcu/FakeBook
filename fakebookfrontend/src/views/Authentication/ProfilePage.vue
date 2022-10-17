@@ -1,65 +1,66 @@
 <template>
-  <div class="padding">
+
     <div class="col-md-8">
         <!-- Column -->
-        <div class="card"> <img class="card-img-top" src="https://i.imgur.com/K7A78We.jpg" alt="Card image cap">
-            <div class="card-body little-profile text-center">
-                <div class="pro-img"><img src="https://i.imgur.com/8RKXAIV.jpg" alt="user"></div>
-                <h3 class="m-b-0">Brad Macullam</h3>
-                <p>Web Designer &amp; Developer</p> <a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded" data-abc="true">Follow</a>
-                <div class="row text-center m-t-20">
-                    <div class="col-lg-4 col-md-4 m-t-20">
-                        <h3 class="m-b-0 font-light">10434</h3><small>Articles</small>
-                    </div>
-                    <div class="col-lg-4 col-md-4 m-t-20">
-                        <h3 class="m-b-0 font-light">434K</h3><small>Followers</small>
-                    </div>
-                    <div class="col-lg-4 col-md-4 m-t-20">
-                        <h3 class="m-b-0 font-light">5454</h3><small>Following</small>
-                    </div>
+      
+
+            <img id="image1" onclick="enlargeImg()" class="card-img-top" src="https://i.imgur.com/K7A78We.jpg"
+                alt="Card image cap">
+    
+        <div class="card-body little-profile text-center">
+            <div class="pro-img">
+                <img src="https://i.imgur.com/8RKXAIV.jpg" alt="user">
+            </div>
+            <h3 class="m-b-0">Brad Macullam</h3>
+            <p>Web Designer &amp; Developer</p> <a href="javascript:void(0)"
+                class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded" data-abc="true">Follow</a>
+            <div class="row text-center m-t-20">
+                <div class="col-lg-4 col-md-4 m-t-20">
+                    <h3 class="m-b-0 font-light">10434</h3><small>Articles</small>
+                </div>
+                <div class="col-lg-4 col-md-4 m-t-20">
+                    <h3 class="m-b-0 font-light">434K</h3><small>Followers</small>
+                </div>
+                <div class="col-lg-4 col-md-4 m-t-20">
+                    <h3 class="m-b-0 font-light">5454</h3><small>Following</small>
                 </div>
             </div>
         </div>
     </div>
-</div>
-  </template>
+
+</template>
   
-  <script>
-  export default {
+<script>
+export default {
     name: 'ProfilePage',
     computed: {
-      currentUser() {
-        return this.$store.state.auth.user;
-      }
+        currentUser() {
+            return this.$store.state.auth.user;
+        }
     },
     // mounted() {
     //   if (!this.currentUser) {
     //     this.$router.push('/login');
     //   }
     // }
-  };
-  </script>
 
-  <style scoped>
-  body {
+    methods: {
+        enlargeImg() {
+            var theImage = document.getElementById("image1");
+            theImage.width = theImage.width * 2;
+            theImage.height = theImage.height * 2;
+        },
+    }
+};
+</script>
+
+<style scoped>
+body {
     background-color: #000000
 }
 
-.padding {
-    padding: 3rem !important;
-    margin-left: 200px
-}
-
-.card-img-top{
-    height:300px;
-}
-
-.card-no-border .card {
-    border-color: #d7dfe3;
-    border-radius: 4px;
-    margin-bottom: 30px;
-    -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)
+.card-img-top {
+    height: 300px;
 }
 
 .card-body {
@@ -101,7 +102,7 @@ html body .m-t-10 {
 
 .btn-primary,
 .btn-primary.disabled {
-    background: #7460ee;
+    background: blue;
     border: 1px solid #7460ee;
     -webkit-box-shadow: 0 2px 2px 0 rgba(116, 96, 238, 0.14), 0 3px 1px -2px rgba(116, 96, 238, 0.2), 0 1px 5px 0 rgba(116, 96, 238, 0.12);
     box-shadow: 0 2px 2px 0 rgba(116, 96, 238, 0.14), 0 3px 1px -2px rgba(116, 96, 238, 0.2), 0 1px 5px 0 rgba(116, 96, 238, 0.12);
