@@ -2,11 +2,17 @@
 
     <div class="col-md-8">
         <!-- Column -->
-      
+        <div>
 
-            <img id="image1" onclick="enlargeImg()" class="card-img-top" src="https://i.imgur.com/K7A78We.jpg"
-                alt="Card image cap">
-    
+            <div class="coverImg">
+                
+                <ExpandableImage id="image1"  class="card-img-top" src="https://i.imgur.com/K7A78We.jpg"
+                alt="Card image cap"/>
+                
+            </div>
+            
+        </div>
+        
         <div class="card-body little-profile text-center">
             <div class="pro-img">
                 <img src="https://i.imgur.com/8RKXAIV.jpg" alt="user">
@@ -31,6 +37,7 @@
 </template>
   
 <script>
+import ExpandableImage from '../../components/ExpandableImage.vue'
 export default {
     name: 'ProfilePage',
     computed: {
@@ -43,14 +50,7 @@ export default {
     //     this.$router.push('/login');
     //   }
     // }
-
-    methods: {
-        enlargeImg() {
-            var theImage = document.getElementById("image1");
-            theImage.width = theImage.width * 2;
-            theImage.height = theImage.height * 2;
-        },
-    }
+    components: { ExpandableImage }
 };
 </script>
 
