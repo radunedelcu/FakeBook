@@ -3,5 +3,6 @@ module.exports = defineConfig({
   configureWebpack: {
     devtool: 'source-map'
   },
-  transpileDependencies: true
+  transpileDependencies: true,
+  lintOnSave: false,
 })
