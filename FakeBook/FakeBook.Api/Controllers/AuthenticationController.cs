@@ -33,7 +33,7 @@ namespace FakeBook.Api.Controllers {
     public async Task<IActionResult> Login([FromBody] RequestLoginModel requestLoginModel) {
       var loginModel = await _authenticationQuery.LoginIfUserExists(requestLoginModel);
       if (loginModel == null) {
-        return NotFound();
+        return NotFound("Account not found");
       }
 
       return Ok(loginModel);

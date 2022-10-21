@@ -9,6 +9,7 @@ using FakeBook.Domain.Models.Responses.Commands.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,13 +77,14 @@ namespace FakeBook.Application.Handlers.Commads {
     public string UploadProfilePicture(IFormFile file) {
       var fileName = Convert.ToBase64String(Guid.NewGuid().ToByteArray())
                          .Substring(0, 6)
-                         .Replace("\\", "_")
+                         .Replace(@"\", "_")
                          .Replace("+", "-");
       string filePath = String.Empty;
       if (file != null) {
-        string directoryPath =
-            Path.Combine(_webHostEnvironment.ContentRootPath, "Resources/ProfilePictures");
-        filePath = Path.Combine(directoryPath, fileName);
+        filePath = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
+                                                         "Resources/ProfilePictures"))
+                       .Root +
+                   $@"\{fileName}" + Path.GetExtension(Path.GetFileName(file.FileName));
         using (var stream = new FileStream(filePath, FileMode.Create)) {
           file.CopyTo(stream);
         }
@@ -93,13 +95,14 @@ namespace FakeBook.Application.Handlers.Commads {
     public string UploadCoverImage(IFormFile file) {
       var fileName = Convert.ToBase64String(Guid.NewGuid().ToByteArray())
                          .Substring(0, 6)
-                         .Replace("\\", "_")
+                         .Replace(@"\", "_")
                          .Replace("+", "-");
       string filePath = String.Empty;
       if (file != null) {
-        string directoryPath =
-            Path.Combine(_webHostEnvironment.ContentRootPath, "Resources/CoverImages");
-        filePath = Path.Combine(directoryPath, fileName);
+        filePath = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
+                                                         "Resources/CoverImages"))
+                       .Root +
+                   $@"\{fileName}" + Path.GetExtension(Path.GetFileName(file.FileName));
         using (var stream = new FileStream(filePath, FileMode.Create)) {
           file.CopyTo(stream);
         }

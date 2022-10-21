@@ -24,7 +24,7 @@
         <h1>Login</h1>
         <div class="form-group">
           <Field name="email" placeholder="Email" type="text" class="form-control" />
-          <ErrorMessage name="username" class="error-feedback" />
+          <ErrorMessage name="email" class="error-feedback" />
         </div>
         <div class="form-group">
           <Field name="password" placeholder="Password" type="password" class="form-control"/>
@@ -68,10 +68,9 @@ export default {
   },
   data() {
     const schema = yup.object().shape({
-      email: yup.string().required("Email is required!"),
+      email: yup.string().required("Email is required!").email("Email is invalid"),
       password: yup.string().required("Password is required!"),
     });
-
     return {
       loading: false,
       message: "",

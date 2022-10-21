@@ -21,8 +21,9 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                                                    { options.UseSqlServer(connectionString); });
+builder.Services.AddDbContext<ApplicationDbContext>(options => {
+  options.UseSqlServer(connectionString);
+});
 builder.Services.AddScoped<IAuthenticationCommand, AuthenticationCommand>();
 builder.Services.AddScoped<IAuthenticationQuery, AuthenticationQuery>();
 builder.Services.AddScoped<IJwtQueryService, JwtQueryService>();
@@ -32,37 +33,34 @@ builder.Services.AddScoped<IProfileCommand, ProfileCommand>();
 builder.Services.AddDistributedMemoryCache();
 
 builder.Services
-    .AddAuthentication(x =>
-                       {
-                           x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                           x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                       })
-    .AddJwtBearer(o =>
-                  {
-                      var Key = Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]);
-                      o.SaveToken = true;
-                      o.TokenValidationParameters =
-                          new TokenValidationParameters { ValidateIssuer = false,
-                                                          ValidateAudience = false,
-                                                          ValidateLifetime = true,
-                                                          ValidateIssuerSigningKey = true,
-                                                          ValidIssuer = builder.Configuration["JWT:Issuer"],
-                                                          ValidAudience = builder.Configuration["JWT:Audience"],
-                                                          IssuerSigningKey = new SymmetricSecurityKey(Key) };
-                  });
+    .AddAuthentication(x => {
+      x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+      x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(o => {
+      var Key = Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]);
+      o.SaveToken = true;
+      o.TokenValidationParameters =
+          new TokenValidationParameters { ValidateIssuer = false,
+                                          ValidateAudience = false,
+                                          ValidateLifetime = true,
+                                          ValidateIssuerSigningKey = true,
+                                          ValidIssuer = builder.Configuration["JWT:Issuer"],
+                                          ValidAudience = builder.Configuration["JWT:Audience"],
+                                          IssuerSigningKey = new SymmetricSecurityKey(Key) };
+    });
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+if (app.Environment.IsDevelopment()) {
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 // app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors(m => m.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 

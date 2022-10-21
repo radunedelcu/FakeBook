@@ -9,5 +9,9 @@ namespace FakeBook.Domain.Models.Responses.Queries.Authentication {
   public class ResponseLoginModel {
     public string Token { get; set; }
     public string Name { get; set; }
+    public string Email { get; set; }
+    public string? Quote { get; set; }
+    public string? ProfilePicture { get; set; }
+    public string? CoverImage { get; set; }
   }
 }

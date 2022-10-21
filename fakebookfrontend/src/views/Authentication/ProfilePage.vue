@@ -1,25 +1,21 @@
 <template>
 
-    <div class="col-md-8">
+    <div>
         <!-- Column -->
-        <div>
-
+        <div class="cover">
             <div class="coverImg">
-                
                 <ExpandableImage id="image1"  class="card-img-top" src="https://i.imgur.com/K7A78We.jpg"
                 alt="Card image cap"/>
-                
             </div>
-            
         </div>
         
         <div class="card-body little-profile text-center">
             <div class="pro-img">
                 <img src="https://i.imgur.com/8RKXAIV.jpg" alt="user">
             </div>
-            <h3 class="m-b-0">Brad Macullam</h3>
-            <p>Web Designer &amp; Developer</p> <a href="javascript:void(0)"
-                class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded" data-abc="true">Follow</a>
+            <h3 class="m-b-0">{{currentUser.name}}</h3>
+            <p>{{currentUser.quote}}</p> <a href="javascript:void(0)"
+                class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded" data-abc="true">Add Friend</a>
             <div class="row text-center m-t-20">
                 <div class="col-lg-4 col-md-4 m-t-20">
                     <h3 class="m-b-0 font-light">10434</h3><small>Articles</small>
@@ -60,7 +56,8 @@ body {
 }
 
 .card-img-top {
-    height: 300px;
+    height: 300px !important;
+ 
 }
 
 .card-body {
@@ -72,6 +69,10 @@ body {
 .pro-img {
     margin-top: -80px;
     margin-bottom: 20px
+}
+
+.coverImg {
+    width: 100%;
 }
 
 .little-profile .pro-img img {
@@ -100,6 +101,10 @@ html body .m-t-10 {
     margin-top: 10px
 }
 
+.cover {
+    width: 100%;
+}
+
 .btn-primary,
 .btn-primary.disabled {
     background: blue;
@@ -122,6 +127,10 @@ html body .m-t-10 {
 
 .text-center {
     text-align: center !important
+}
+
+#image1 {
+    width: 100%;
 }
 
 h1,

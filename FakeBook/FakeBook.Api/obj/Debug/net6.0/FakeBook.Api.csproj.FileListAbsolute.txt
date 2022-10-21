@@ -72,3 +72,4 @@ C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Api\bin\Debug\net6.0\
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Api\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Api\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\Roweb\projects\SocialNetworkApp\FakeBook\FakeBook.Api\bin\Debug\net6.0\FakeBook.Api.staticwebassets.runtime.json

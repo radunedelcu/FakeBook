@@ -32,9 +32,32 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Images\" />
-    <Folder Include="Resources\CoverImages\" />
-    <Folder Include="Resources\ProfilePictures\" />
+    <None Include="wwwroot\Resources\CoverImages\g9FIO7" />
+    <None Include="wwwroot\Resources\CoverImages\neitVo" />
+    <None Include="wwwroot\Resources\CoverImages\VPtgCJ" />
+    <None Include="wwwroot\Resources\CoverImages\VYhaY4" />
+    <None Include="wwwroot\Resources\CoverImages\XMn7yG" />
+    <None Include="wwwroot\Resources\CoverImages\xpyBFL" />
+    <None Include="wwwroot\Resources\Images\0eM6U6" />
+    <None Include="wwwroot\Resources\Images\AmuPlL" />
+    <None Include="wwwroot\Resources\Images\bNs8aK" />
+    <None Include="wwwroot\Resources\Images\fms.jpeg" />
+    <None Include="wwwroot\Resources\Images\IsaUEB" />
+    <None Include="wwwroot\Resources\Images\kO9Ug9" />
+    <None Include="wwwroot\Resources\Images\Kx71yK" />
+    <None Include="wwwroot\Resources\Images\LIr12a" />
+    <None Include="wwwroot\Resources\Images\n6vs2e" />
+    <None Include="wwwroot\Resources\Images\pexels-anjana-c-674010.jpg" />
+    <None Include="wwwroot\Resources\ProfilePictures\0alSmT" />
+    <None Include="wwwroot\Resources\ProfilePictures\1r5i6o" />
+    <None Include="wwwroot\Resources\ProfilePictures\29ln3F" />
+    <None Include="wwwroot\Resources\ProfilePictures\AjFGX-" />
+    <None Include="wwwroot\Resources\ProfilePictures\emBAWw" />
+    <None Include="wwwroot\Resources\ProfilePictures\h7RI66" />
+    <None Include="wwwroot\Resources\ProfilePictures\HY1nqY" />
+    <None Include="wwwroot\Resources\ProfilePictures\lw6Pq8" />
+    <None Include="wwwroot\Resources\ProfilePictures\lZBtcr" />
+    <None Include="wwwroot\Resources\ProfilePictures\N3mMD8" />
   </ItemGroup>
 
 </Project>

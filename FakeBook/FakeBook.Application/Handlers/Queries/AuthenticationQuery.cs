@@ -32,7 +32,11 @@ namespace FakeBook.Application.Handlers.Queries {
                               accountEntity.HashPassword)) {
           return new ResponseLoginModel() { Token = _jwtQueryService.GetJwtToken(
                                                 accountEntity.Email, accountEntity.Id),
-                                            Name = accountEntity.Name };
+                                            Name = accountEntity.Name,
+                                            Email = accountEntity.Email,
+                                            Quote = accountEntity.Quote,
+                                            ProfilePicture = accountEntity.ProfilePicture,
+                                            CoverImage = accountEntity.CoverImage };
         }
 
         return null;
@@ -54,16 +58,5 @@ namespace FakeBook.Application.Handlers.Queries {
         return true;
       }
     }
-    // public bool IsAdmin(string username)
-    //{
-
-    //    var user = _applicationDbContext.Accounts.Where(a => a.Username ==
-    //    username).FirstOrDefault(); if (user != null)
-    //    {
-    //        return user.IsAdmin.HasValue;
-    //    }
-
-    //    return false;
-    //}
   }
 }

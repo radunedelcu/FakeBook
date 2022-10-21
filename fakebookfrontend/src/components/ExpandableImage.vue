@@ -1,33 +1,31 @@
 <template>
   <div class="expandable-image" :class="{ expanded }" @click="expanded = true">
-
-    <i v-if="expanded" class="close-button">
-
-      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-
-        <path fill="#666666"
-          d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
-
-      </svg>
-
-    </i>
-    <i v-else class="expand-button">
-      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-        <path fill="#000000"
-          d="M10,21V19H6.41L10.91,14.5L9.5,13.09L5,17.59V14H3V21H10M14.5,10.91L19,6.41V10H21V3H14V5H17.59L13.09,9.5L14.5,10.91Z" />
-      </svg>
-    </i>
-
-    <div class="popup row h-100">
+    <div class="popup h-100">
       <div class="col-lg-8 col-12 my-auto">
         <div class="image-container">
+          <i v-if="expanded" class="close-button">
+  
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      
+              <path fill="#666666"
+                d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+      
+            </svg>
+      
+          </i>
+          <i v-else class="expand-button">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="#000000"
+                d="M10,21V19H6.41L10.91,14.5L9.5,13.09L5,17.59V14H3V21H10M14.5,10.91L19,6.41V10H21V3H14V5H17.59L13.09,9.5L14.5,10.91Z" />
+            </svg>
+          </i>
           <img v-bind="$attrs" />
         </div>
       </div>
       <div v-if="expanded" class="col-lg-4 col-12 h-100">
           <div  class="h-100">
             <div class="bg-white p-4 h-100 position-relative">
-              <div style="height:80%; overflow-y:scroll;flex-flow:column">
+              <div style="height:80%; overflow-y:scroll; flex-flow:column">
                       <div class="d-flex flex-start align-items-center" style="flex: 0 1 auto">
                         <img class="profileImage"
                         src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar"/>
@@ -97,6 +95,12 @@ export default {
       expanded: false
     }
   },
+  computed: {
+        currentUser() {
+            return this.$store.state.auth.user;
+         
+        },
+    },
   methods:
   {
     closeImage(event) {
@@ -184,7 +188,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .expandable-image {
   position: relative;
   transition: 0.25s opacity;
@@ -216,13 +220,12 @@ body>.expandable-image.expanded>img {
 
 body>.expandable-image.expanded>.close-button {
   display: block;
+  
 }
 
 .close-button {
   position: fixed;
   top: 10px;
-  right: 10px;
-  display: none;
   cursor: pointer;
 }
 
