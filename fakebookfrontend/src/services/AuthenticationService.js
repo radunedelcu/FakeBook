@@ -4,11 +4,7 @@ const API_URL = 'https://localhost:7026/api/Authentication/';
 
 class AuthService {
 
-   getAuth(){
-     return  axios
-      .get(API_URL + 'auth')
-      .then(response => response.data);
-   }
+
 
   login(user) {
     return axios

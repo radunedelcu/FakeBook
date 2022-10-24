@@ -193,6 +193,8 @@ export default {
   position: relative;
   transition: 0.25s opacity;
   display: flex !important;
+  object-fit: fill;
+  display: table;
 }
 
 body>.expandable-image.expanded {
