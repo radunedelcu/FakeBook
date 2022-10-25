@@ -188,7 +188,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .expandable-image {
   position: relative;
   transition: 0.25s opacity;

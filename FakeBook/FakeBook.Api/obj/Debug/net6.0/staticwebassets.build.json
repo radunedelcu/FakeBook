@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fMlmdW4P9BfI8cCTUOqjCp8ao6mOP9iU2bYs/rZ2iT4=",
+  "Hash": "Qu3flyRheftK2XxXzJaRO9cYSX8Ga3oYXO35FJuHmOc=",
   "Source": "FakeBook.Api",
   "BasePath": "_content/FakeBook.Api",
   "Mode": "Default",
@@ -32,6 +32,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Resources\\CoverImages\\g9FIO7"
+    },
+    {
+      "Identity": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Api\\wwwroot\\Resources\\CoverImages\\HwGLZH.jpg",
+      "SourceId": "FakeBook.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Api\\wwwroot\\",
+      "BasePath": "_content/FakeBook.Api",
+      "RelativePath": "Resources/CoverImages/HwGLZH.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Resources\\CoverImages\\HwGLZH.jpg"
     },
     {
       "Identity": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Api\\wwwroot\\Resources\\CoverImages\\neitVo",
@@ -474,6 +491,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Resources\\ProfilePictures\\N3mMD8"
+    },
+    {
+      "Identity": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Api\\wwwroot\\Resources\\ProfilePictures\\RkG8T.jpeg",
+      "SourceId": "FakeBook.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Api\\wwwroot\\",
+      "BasePath": "_content/FakeBook.Api",
+      "RelativePath": "Resources/ProfilePictures/RkG8T.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Resources\\ProfilePictures\\RkG8T.jpeg"
     }
   ]
 }

@@ -80,7 +80,10 @@ namespace FakeBook.Application.Handlers.Commads {
                          .Replace(@"\", "_")
                          .Replace("+", "-");
       string filePath = String.Empty;
+      string relativePath = String.Empty;
       if (file != null) {
+        relativePath = "Resources/ProfilePictures" + $@"\{fileName}" +
+                       Path.GetExtension(Path.GetFileName(file.FileName));
         filePath = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
                                                          "Resources/ProfilePictures"))
                        .Root +
@@ -89,7 +92,7 @@ namespace FakeBook.Application.Handlers.Commads {
           file.CopyTo(stream);
         }
       }
-      return filePath;
+      return relativePath;
     }
 
     public string UploadCoverImage(IFormFile file) {
@@ -98,7 +101,10 @@ namespace FakeBook.Application.Handlers.Commads {
                          .Replace(@"\", "_")
                          .Replace("+", "-");
       string filePath = String.Empty;
+      string relativePath = String.Empty;
       if (file != null) {
+        relativePath = "Resources/CoverImages" + $@"\{fileName}" +
+                       Path.GetExtension(Path.GetFileName(file.FileName));
         filePath = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
                                                          "Resources/CoverImages"))
                        .Root +
@@ -107,7 +113,7 @@ namespace FakeBook.Application.Handlers.Commads {
           file.CopyTo(stream);
         }
       }
-      return filePath;
+      return relativePath;
     }
   }
 }

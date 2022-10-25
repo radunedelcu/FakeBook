@@ -11,6 +11,6 @@ const apiClient = axios.create({
 
   export default {
     getProfilePage(id) {
-        return apiClient.get('/${id}')
+        return apiClient.get(`/${id}/GetProfilePage`)
     } 
   };

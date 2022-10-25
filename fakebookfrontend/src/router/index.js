@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import RegisterView from '../views/Authentication/RegisterView.vue'
 import LoginView from '../views/Authentication/LoginView.vue'
-import PorfilePage from '../views/Authentication/ProfilePage.vue'
+import ProfilePage from '../views/Authentication/ProfilePage.vue'
 
 const routes = [
   {
@@ -26,11 +26,12 @@ const routes = [
     component: LoginView
   },
   {
-    path: '/profile',
+    path: '/profile/:id',
     name: 'profile',
-    component: PorfilePage,
-    beforeEnter: checkAuth
-  }
+    component: ProfilePage,
+    props: true,
+    beforeEnter: checkAuth,
+  },
 ]
 
 const router = createRouter({

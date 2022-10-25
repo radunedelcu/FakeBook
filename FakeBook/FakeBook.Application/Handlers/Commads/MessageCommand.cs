@@ -40,7 +40,10 @@ namespace FakeBook.Application.Handlers.Commads {
                          .Replace(@"\", "_")
                          .Replace("+", "-");
       string filePath = String.Empty;
+      string relativePath = String.Empty;
       if (file != null) {
+        relativePath = "Resources/Images" + $@"\{fileName}" +
+                       Path.GetExtension(Path.GetFileName(file.FileName));
         filePath = new PhysicalFileProvider(
                        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Resources/Images"))
                        .Root +
@@ -49,7 +52,8 @@ namespace FakeBook.Application.Handlers.Commads {
           file.CopyTo(stream);
         }
       }
-      return filePath;
+
+      return relativePath;
     }
 
     public void DeleteImage(string? filePath) {
@@ -88,15 +92,17 @@ namespace FakeBook.Application.Handlers.Commads {
           .ToListAsync();
     }
 
-    public async Task<MessageEntity?> GetMessage(int messageId, int userId) {
-      return await _applicationDbContext.Messages
-          .Where(m => m.Id == messageId && m.UserId == userId)
+    public async Task<MessageEntity?> GetMessage(int messageId) {
+      return await _applicationDbContext.Messages.Where(m => m.Id == messageId)
           .FirstOrDefaultAsync();
     }
 
     public async Task<bool> EditMessage(int userId, int messageId, string message,
                                         IFormFile image) {
-      var messageEntity = await GetMessage(messageId, userId);
+      var messageEntity = await GetMessage(messageId);
+      if (messageEntity.UserId != userId) {
+        throw new Exception("This is not your message");
+      }
       if (messageEntity == null) {
         throw new Exception("The message was not found.");
       }
@@ -117,15 +123,19 @@ namespace FakeBook.Application.Handlers.Commads {
     }
 
     public async Task<bool> DeleteMessage(int messageId, int userId) {
-      var message = await GetMessage(messageId, userId);
-      if (message == null) {
+      var messageEntity = await GetMessage(messageId);
+      if (messageEntity.UserId != userId) {
+        throw new Exception("This is not your message");
+      }
+
+      if (messageEntity == null) {
         return false;
       }
 
-      var photo = message.ImagePath;
+      var photo = messageEntity.ImagePath;
       DeleteImage(photo);
 
-      _applicationDbContext.Messages.Remove(message);
+      _applicationDbContext.Messages.Remove(messageEntity);
       return await _applicationDbContext.SaveChangesAsync() > 0;
     }
   }

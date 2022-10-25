@@ -21,5 +21,6 @@ namespace FakeBook.Domain.Entities {
     public int UserId {
       get; set;
     }
+    public ICollection<CommentEntity>? Comments { get; set; }
   }
 }

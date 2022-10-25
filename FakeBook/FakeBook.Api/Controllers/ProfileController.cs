@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace FakeBook.Api.Controllers {
-  [Route("api/[controller]")]
+  [Route("api/[controller]/{userId}")]
   [ApiController]
   public class ProfileController : ControllerBase
 
@@ -28,7 +28,7 @@ namespace FakeBook.Api.Controllers {
       return NoContent();
     }
 
-    [HttpGet("GetProfilePage/{userId}")]
+    [HttpGet("GetProfilePage")]
     public async Task<ResponseProfileModel> GetProfilePage(int userId) {
       return await _profileCommand.GetProfilePage(userId);
     }

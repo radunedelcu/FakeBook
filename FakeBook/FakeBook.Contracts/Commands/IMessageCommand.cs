@@ -13,7 +13,7 @@ namespace FakeBook.Contracts.Commands {
   public interface IMessageCommand {
     Task<int> UploadMessage(int userId, string message, IFormFile? file);
     Task<IEnumerable<ResponseMessageModel>> GetMessages(int userId);
-    Task<MessageEntity?> GetMessage(int messageId, int userId);
+    Task<MessageEntity?> GetMessage(int messageId);
     Task<bool> EditMessage(int userId, int messageId, string message, IFormFile image);
     Task<bool> DeleteMessage(int messageId, int userId);
   }

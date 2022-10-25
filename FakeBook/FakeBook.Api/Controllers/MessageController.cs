@@ -30,11 +30,10 @@ namespace FakeBook.Api.Controllers {
         return;
       }
       var newData = Convert.ToInt32(data.Value);
-
       var messageId = await _messageCommand.UploadMessage(newData, requestMessageModel.Message,
                                                           requestMessageModel.Image);
     }
-    [HttpPost("EditMessage")]
+    [HttpPost("EditMessage/{messageId}")]
     [Authorize]
     public async Task<IActionResult> EditMessage([FromForm] RequestMessageUpdateModel newPost) {
       var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
@@ -47,7 +46,7 @@ namespace FakeBook.Api.Controllers {
       return NoContent();
     }
 
-    [HttpGet("GetMessages")]
+    [HttpGet("GetMessages/{userId}")]
     [Authorize]
     public async Task<IEnumerable<ResponseMessageModel>> GetMessages() {
       var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
@@ -76,7 +75,7 @@ namespace FakeBook.Api.Controllers {
       return messageList.OrderByDescending(f => f.CreatedDate);
     }
 
-    [HttpDelete("DeleteMessage")]
+    [HttpDelete("DeleteMessage/{messageId}")]
     [Authorize]
     public async Task<IActionResult> DeleteMessage(int messageId) {
       var data = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
@@ -88,6 +87,14 @@ namespace FakeBook.Api.Controllers {
         return Ok();
       } else
         return Problem();
+    }
+
+    [HttpGet("{messageId}")]
+    public async Task<ResponseMessageModel> GetMessage(int messageId) {
+      var message = await _messageCommand.GetMessage(messageId);
+      return new ResponseMessageModel() { Name = message.User.Name, Message = message.Message,
+                                          ImagePath = message.ImagePath,
+                                          CreatedDate = message.CreatedDate };
     }
   }
 }

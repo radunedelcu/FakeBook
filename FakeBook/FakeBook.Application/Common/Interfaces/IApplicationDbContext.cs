@@ -12,6 +12,7 @@ namespace FakeBook.Application.Common.Interfaces {
     DbSet<RoleEntity> Role { get; set; }
     DbSet<MessageEntity> Messages { get; set; }
     DbSet<FriendEntity> Friends { get; set; }
+    DbSet<CommentEntity> Comments { get; set; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken());
   }
 }

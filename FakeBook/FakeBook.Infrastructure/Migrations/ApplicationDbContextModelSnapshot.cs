@@ -22,6 +22,48 @@ namespace FakeBook.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("FakeBook.Domain.Entities.CommentEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)")
+                        .HasColumnName("content");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("created_date");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasColumnName("deleted");
+
+                    b.Property<int>("MessageId")
+                        .HasColumnType("int")
+                        .HasColumnName("messageId");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("updated_date");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("userId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MessageId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("FakeBook.Domain.Entities.FriendEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -88,6 +130,9 @@ namespace FakeBook.Infrastructure.Migrations
                         .HasColumnType("nvarchar(2048)")
                         .HasColumnName("message");
 
+                    b.Property<int?>("MessageEntityId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("updated_date");
@@ -97,6 +142,8 @@ namespace FakeBook.Infrastructure.Migrations
                         .HasColumnName("userId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MessageEntityId");
 
                     b.HasIndex("UserId");
 
@@ -180,7 +227,6 @@ namespace FakeBook.Infrastructure.Migrations
                         .HasColumnName("profilePicturePath");
 
                     b.Property<string>("Quote")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Quote");
 
@@ -197,6 +243,17 @@ namespace FakeBook.Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("users");
+                });
+
+            modelBuilder.Entity("FakeBook.Domain.Entities.CommentEntity", b =>
+                {
+                    b.HasOne("FakeBook.Domain.Entities.MessageEntity", "Message")
+                        .WithMany()
+                        .HasForeignKey("MessageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Message");
                 });
 
             modelBuilder.Entity("FakeBook.Domain.Entities.FriendEntity", b =>
@@ -216,6 +273,10 @@ namespace FakeBook.Infrastructure.Migrations
 
             modelBuilder.Entity("FakeBook.Domain.Entities.MessageEntity", b =>
                 {
+                    b.HasOne("FakeBook.Domain.Entities.MessageEntity", null)
+                        .WithMany("Messages")
+                        .HasForeignKey("MessageEntityId");
+
                     b.HasOne("FakeBook.Domain.Entities.UserEntity", "User")
                         .WithMany("Messages")
                         .HasForeignKey("UserId")
@@ -234,6 +295,11 @@ namespace FakeBook.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("FakeBook.Domain.Entities.MessageEntity", b =>
+                {
+                    b.Navigation("Messages");
                 });
 
             modelBuilder.Entity("FakeBook.Domain.Entities.UserEntity", b =>

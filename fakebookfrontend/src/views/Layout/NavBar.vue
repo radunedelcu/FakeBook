@@ -19,7 +19,8 @@
                             aria-expanded="false" style="margin-left: 100px">
                             Profile
                         </router-link>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu " style="margin: 0 !important;
+                        ">
                             <li v-if="currentUser">
                                 <router-link to="/logout" @click.prevent="logOut" class="dropdown-item">Logout</router-link>
                             </li>
@@ -27,7 +28,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li v-if="currentUser">
-                                <router-link to="/profile" class="dropdown-item"> Hi {{currentUser.name}} !</router-link>
+                                <router-link v-bind:to="'/profile/' + currentUser.id" class="dropdown-item"> Hi {{currentUser.name}} !</router-link>
                             </li>
                         </ul>
                     </li>

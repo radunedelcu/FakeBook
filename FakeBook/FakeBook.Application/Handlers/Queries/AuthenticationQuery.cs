@@ -36,7 +36,9 @@ namespace FakeBook.Application.Handlers.Queries {
                                             Email = accountEntity.Email,
                                             Quote = accountEntity.Quote,
                                             ProfilePicture = accountEntity.ProfilePicture,
-                                            CoverImage = accountEntity.CoverImage };
+                                            CoverImage = accountEntity.CoverImage,
+                                            Id = accountEntity.Id
+          };
         }
 
         return null;

@@ -30,6 +30,7 @@ builder.Services.AddScoped<IJwtQueryService, JwtQueryService>();
 builder.Services.AddScoped<IFriendCommand, FriendCommand>();
 builder.Services.AddScoped<IMessageCommand, MessageCommand>();
 builder.Services.AddScoped<IProfileCommand, ProfileCommand>();
+builder.Services.AddScoped<ICommentCommand, CommentCommand>();
 builder.Services.AddDistributedMemoryCache();
 
 builder.Services
