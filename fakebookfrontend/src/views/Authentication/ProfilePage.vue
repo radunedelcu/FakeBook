@@ -10,7 +10,7 @@
         <!-- Mask -->
         <div v-if="profile.profile.coverImage" class="mask bg-gradient-default opacity-8">
 
-          <ExpandableImage style="  display: table;"
+          <ExpandableImage 
             v-bind:src="'https://localhost:7026/' + profile.profile.profilePicture" />
         </div>
         <div v-else class="mask bg-gradient-default opacity-8" >
@@ -48,7 +48,6 @@
               <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <div class="d-flex justify-content-between">
                   <a v-if="currentUser" href="#" class="btn btn-sm btn-info mr-4">Add Friend</a>
-                  <a href="#" class="btn btn-sm btn-default float-right">Message</a>
                 </div>
               </div>
               <div class="card-body pt-0 pt-md-4">
@@ -82,9 +81,8 @@
                     <i class="ni education_hat mr-2"></i>{{ profile.profile.quote }}
                   </div>
                   <hr class="my-4">
-                  <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and
-                    records all of his own music.</p>
-                  <a href="#">Show more</a>
+
+                 
                 </div>
               </div>
             </div>
@@ -111,7 +109,7 @@
                             <img class="profileImage" src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
                               alt="avatar" />
                             <div class="info">
-                              <h6 class="fw-bold text-primary mb-1">Lily Coleman</h6>
+                              <h6 class="fw-bold text-primary mb-1">Ionica</h6>
                               <p class="text-muted small mb-0">
                                 Shared publicly - Jan 2020
                               </p>
@@ -1756,6 +1754,8 @@ a.text-white:focus {
 
 }
 
+
+
 .card-profile-image .expandable-image .image-container img {
   width: 150px !important;
   height: 150px !important;
@@ -1764,10 +1764,9 @@ a.text-white:focus {
 }
 
 .mask .expandable-image .image-container img {
-
-  width: 150%;
-  height: 50% !important;
-  object-fit: fill !important;
+  
+  height: 600px !important;
+  object-fit: cover !important;
 }
 
 .card-profile-image img {

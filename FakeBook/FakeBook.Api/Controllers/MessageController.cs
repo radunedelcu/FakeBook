@@ -92,9 +92,13 @@ namespace FakeBook.Api.Controllers {
     [HttpGet("{messageId}")]
     public async Task<ResponseMessageModel> GetMessage(int messageId) {
       var message = await _messageCommand.GetMessage(messageId);
+      if (message == null) {
+        throw new Exception("Message not found");
+      }
       return new ResponseMessageModel() { Name = message.User.Name, Message = message.Message,
                                           ImagePath = message.ImagePath,
-                                          CreatedDate = message.CreatedDate };
+                                          CreatedDate = message.CreatedDate,
+                                          UserProfilePicture = message.User.ProfilePicture };
     }
   }
 }

@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.FileProviders;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http.Headers;
@@ -83,17 +84,19 @@ namespace FakeBook.Application.Handlers.Commads {
     }
 
     public async Task<IEnumerable<ResponseMessageModel>> GetMessages(int userId) {
-      var user = await _applicationDbContext.Users.FindAsync(userId);
-
       return await _applicationDbContext.Messages.Where(f => f.UserId == userId)
-          .Select(f => new ResponseMessageModel() { Message = f.Message, CreatedDate = DateTime.Now,
-                                                    ImagePath = f.ImagePath, Name = f.User.Name })
+          .Include(u => u.User)
+          .Select(f =>
+                      new ResponseMessageModel() { Message = f.Message, CreatedDate = f.CreatedDate,
+                                                   ImagePath = f.ImagePath, Name = f.User.Name,
+                                                   UserProfilePicture = f.User.ProfilePicture })
           .OrderBy(f => f.CreatedDate)
           .ToListAsync();
     }
 
     public async Task<MessageEntity?> GetMessage(int messageId) {
       return await _applicationDbContext.Messages.Where(m => m.Id == messageId)
+          .Include(u => u.User)
           .FirstOrDefaultAsync();
     }
 

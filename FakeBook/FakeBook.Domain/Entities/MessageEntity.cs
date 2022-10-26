@@ -18,6 +18,7 @@ namespace FakeBook.Domain.Entities {
     }
     public UserEntity User { get; set; }
     [Column("userId")]
+
     public int UserId {
       get; set;
     }

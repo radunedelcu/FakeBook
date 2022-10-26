@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Qu3flyRheftK2XxXzJaRO9cYSX8Ga3oYXO35FJuHmOc=",
+  "Hash": "V6MsZsDNeAhq3jmkfzHG0rhgV4dYza5CORB+jkwdUQo=",
   "Source": "FakeBook.Api",
   "BasePath": "_content/FakeBook.Api",
   "Mode": "Default",
@@ -134,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Resources\\CoverImages\\xpyBFL"
+    },
+    {
+      "Identity": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Api\\wwwroot\\Resources\\CoverImages\\ZCOiUy.jpg",
+      "SourceId": "FakeBook.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Api\\wwwroot\\",
+      "BasePath": "_content/FakeBook.Api",
+      "RelativePath": "Resources/CoverImages/ZCOiUy.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Resources\\CoverImages\\ZCOiUy.jpg"
     },
     {
       "Identity": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Api\\wwwroot\\Resources\\Images\\0eM6U6",
@@ -372,6 +389,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Resources\\ProfilePictures\\29ln3F"
+    },
+    {
+      "Identity": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Api\\wwwroot\\Resources\\ProfilePictures\\9-i3pg.jpg",
+      "SourceId": "FakeBook.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Api\\wwwroot\\",
+      "BasePath": "_content/FakeBook.Api",
+      "RelativePath": "Resources/ProfilePictures/9-i3pg.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Resources\\ProfilePictures\\9-i3pg.jpg"
     },
     {
       "Identity": "C:\\Users\\Roweb\\projects\\SocialNetworkApp\\FakeBook\\FakeBook.Api\\wwwroot\\Resources\\ProfilePictures\\AjFGX-",

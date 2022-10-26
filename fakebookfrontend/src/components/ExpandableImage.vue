@@ -1,7 +1,7 @@
 <template>
   <div class="expandable-image" :class="{ expanded }" @click="expanded = true">
     <div class="popup h-100">
-      <div class="col-lg-8 col-12 my-auto">
+      <div v-bind:class="expanded?'col-lg-8 col-12 my-auto':'col-lg-12 my-auto'">
         <div class="image-container">
           <i v-if="expanded" class="close-button">
   
@@ -57,7 +57,7 @@
                                   <p class="mb-0">Share</p>
                                 </a>
                               </div>
-                              <div v-for="comment in getDummyComments()">
+                              <div>
                                 <span>{{comment}} COMMENT</span>
                               </div>
                             </div>
@@ -100,7 +100,7 @@ export default {
             return this.$store.state.auth.user;
          
         },
-    },
+      },
   methods:
   {
     closeImage(event) {
@@ -111,6 +111,7 @@ export default {
       e.preventDefault()
     },
     onExpandedImageClick(e) {
+    
       e.stopPropagation()
       const image = this.cloned.querySelector('img')
       const imagePosition = this.getRenderedSize(image.width, image.height, image.naturalWidth, image.naturalHeight)
@@ -139,12 +140,6 @@ export default {
       const bottom = top + height
       return { left, top, right, bottom }
     },
-
-    getDummyComments() {
-      return [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-      ]
-    }
   },
   watch: {
     expanded(expanded) {
@@ -192,9 +187,7 @@ export default {
 .expandable-image {
   position: relative;
   transition: 0.25s opacity;
-  display: flex !important;
-  object-fit: fill;
-  display: table;
+  
 }
 
 body>.expandable-image.expanded {
@@ -209,6 +202,7 @@ body>.expandable-image.expanded {
   align-items: center;
   opacity: 0;
   padding-bottom: 0 !important;
+  display: flex !important;
   cursor: default;
 }
 
@@ -268,6 +262,13 @@ svg path {
 
 .expandable-image img {
   width: 100%;
+  max-height: 100vh;
+}
+
+.expandable-image.expanded img {
+  width: 100%;
+  object-fit: contain !important;
+  max-height: 100vh;
 }
 
 .profileImage {
@@ -285,7 +286,6 @@ svg path {
 }
 
 .image-container {
-  float: left;
 }
 
 .image-container img {

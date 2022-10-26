@@ -10,6 +10,8 @@ namespace FakeBook.Domain.Models.Responses.Queries.Message {
     public string Name { get; set; }
     public string Message { get; set; }
     public string? ImagePath { get; set; }
+
+    public string UserProfilePicture { get; set; }
     public DateTime CreatedDate { get; set; }
   }
 }
